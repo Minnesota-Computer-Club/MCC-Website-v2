@@ -1,0 +1,14 @@
+@tailwind base;
+
+@layer base {
+  body {
+    @apply dark:bg-slate-900;
+  }
+
+  main {
+    @apply p-8;
+  }
+}
+
+@tailwind components;
+@tailwind utilities;

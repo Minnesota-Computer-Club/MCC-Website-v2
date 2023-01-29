@@ -1,0 +1,35 @@
+{
+  "name": "minnesotacomputerclub",
+  "version": "2.0.0",
+  "author": "",
+  "license": "MIT",
+  "description": "The official website of the Minnesota Computer Club (MCC).",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@headlessui/react": "^1.7.7",
+    "@heroicons/react": "^2.0.13",
+    "@next/font": "^13.1.2",
+    "@tanstack/react-table": "^8.7.6",
+    "axios": "^1.2.3",
+    "date-fns": "^2.29.3",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "fs": "^0.0.1-security",
+    "moment-timezone": "^0.5.40",
+    "next": "^13.1.2",
+    "next-themes": "^0.2.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.13",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.2.4"
+  }
+}
