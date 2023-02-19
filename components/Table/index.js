@@ -76,7 +76,15 @@ export default function Table(props) {
           {table.getHeaderGroups().map(headerGroup => (
             <tr key={headerGroup.id}>
               {headerGroup.headers.map(header => (
-                <th key={header.id} className="px-6 py-3 w-96">
+                <th {
+                  ...{
+                    key: header.id,
+                    className: "px-6 py-3 w-96",
+                    colSpan: header.colSpan,
+                    style: {
+                      width: header.getSize(),
+                    },
+                  }}>
                   <div
                     {...{
                       className: header.column.getCanSort()
