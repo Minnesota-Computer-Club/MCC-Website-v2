@@ -1,6 +1,6 @@
 // Import required dependencies.
 import Head from 'next/head';
-import { Inter } from '@next/font/google';
+import { Inter } from 'next/font/google';
 import { ThemeProvider } from 'next-themes';
 
 // Import global styles.

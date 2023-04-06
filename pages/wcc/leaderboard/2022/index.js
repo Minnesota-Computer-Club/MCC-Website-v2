@@ -273,7 +273,7 @@ export default function WCCLeaderboard(props) {
     <>
       <Head>
         <title>2022 WCC Leaderboard - Minnesota Computer Club</title>
-        <meta name="title" property="og:title" content=">2022 WCC Leaderboard - Minnesota Computer Club" key="title" />
+        <meta name="title" property="og:title" content="2022 WCC Leaderboard - Minnesota Computer Club" key="title" />
         <meta name="description" property="org:description" content="View the leaderboard for the 2022 Winter Coding Challenege." key="description" />
       </Head>
 
@@ -392,7 +392,7 @@ export async function getServerSideProps() {
 
   // Update the time of our most recent API call.
   // Do this no matter the outcome of our API calls to prevent overwhelming external APIs.
-  lastAPIPull = Date.now() + 1 * 60 * 1000;
+  lastAPIPull = Date.now() + 15 * 60 * 1000;
 
   return { props: { AOC: cached.AOC, form: cached.form, error: cached.error } };
 }

@@ -63,7 +63,7 @@ export default function WinterCodingChallenge() {
     <>
       <Head>
         <title>WCC - Minnesota Computer Club</title>
-        <meta name="title" property="og:title" content=">WCC - Minnesota Computer Club" key="title" />
+        <meta name="title" property="og:title" content="WCC - Minnesota Computer Club" key="title" />
         <meta name="description" property="org:description" content="Learn more about the annual Winter Coding Challenge (WCC)." key="description" />
       </Head>
 

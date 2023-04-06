@@ -17,8 +17,8 @@ export const navigationItems = [
     includeInHeader: true,
   }, 
   {
-    name: 'About Us',
-    href: '/about',
+    name: 'News',
+    href: '/news',
     subItems: [],
     includeInFooter: true,
     includeInHeader: true,
