@@ -278,7 +278,7 @@ export default function WCCLeaderboard(props) {
     <>
       <Head>
         <title>WCC Leaderboard - Minnesota Computer Club</title>
-        <meta name="title" property="og:title" content=">WCC Leaderboard - Minnesota Computer Club" key="title" />
+        <meta name="title" property="og:title" content="WCC Leaderboard - Minnesota Computer Club" key="title" />
         <meta name="description" property="org:description" content="View the leaderboard for the Winter Coding Challenege." key="description" />
       </Head>
 

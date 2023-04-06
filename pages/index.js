@@ -7,7 +7,7 @@ export default function Homepage() {
     <>
       <Head>
         <title>Home - Minnesota Computer Club</title>
-        <meta name="title" property="og:title" content=">Home - Minnesota Computer Club" key="title" />
+        <meta name="title" property="og:title" content="Home - Minnesota Computer Club" key="title" />
         <meta name="description" property="org:description" content="The official website of the Minnesota Computer Club (MCC)." key="description" />
       </Head>
 

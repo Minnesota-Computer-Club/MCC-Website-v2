@@ -7,7 +7,7 @@ export default function About() {
     <>
       <Head>
         <title>About Us - Minnesota Computer Club</title>
-        <meta name="title" property="og:title" content=">About Us - Minnesota Computer Club" key="title" />
+        <meta name="title" property="og:title" content="About Us - Minnesota Computer Club" key="title" />
         <meta name="description" property="org:description" content="Learn more about the Minnesota Computer Club (MCC)." key="description" />
       </Head>
 
