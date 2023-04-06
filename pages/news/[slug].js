@@ -32,12 +32,14 @@ export default function Post(props) {
 }
 
 export async function getStaticPaths() {
-  const files = fs.readdirSync(`./pages/news/_posts/`);
+  const files = fs.readdirSync(`./pages/news/_posts/`, {withFileTypes: true});
 
-  const paths = files.map((fileName) => {
+  const filteredPostFiles = files.filter((entry) => entry.name.endsWith(".md"));
+
+  const paths = filteredPostFiles.map((file) => {
     return {
       params: {
-        slug: fileName.replace('.md', ''),
+        slug: file.name.replace('.md', ''),
       },
     };
   });
