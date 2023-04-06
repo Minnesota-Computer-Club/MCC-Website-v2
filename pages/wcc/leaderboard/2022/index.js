@@ -392,7 +392,7 @@ export async function getServerSideProps() {
 
   // Update the time of our most recent API call.
   // Do this no matter the outcome of our API calls to prevent overwhelming external APIs.
-  lastAPIPull = Date.now() + 1 * 60 * 1000;
+  lastAPIPull = Date.now() + 15 * 60 * 1000;
 
   return { props: { AOC: cached.AOC, form: cached.form, error: cached.error } };
 }
