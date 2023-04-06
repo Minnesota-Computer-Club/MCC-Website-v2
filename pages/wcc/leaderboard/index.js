@@ -5,6 +5,7 @@ import { fromUnixTime } from 'date-fns';
 import Head from 'next/head';
 import Link from "next/link";
 import * as React from 'react';
+import * as fs from 'fs';
 import { createColumnHelper } from '@tanstack/react-table';
 
 import Countdown from "/components/Countdown";
@@ -287,7 +288,7 @@ export default function WCCLeaderboard(props) {
       </div>
 
       {/* Error Bar for Displaying Error Messages from Fetching External APIs */}
-      { props.error.errorStatus ? <ErrorBar errorCode={props.error.errorCode} errorMsg={props.error.errorMsg}></ErrorBar> : null }
+      {props.error.errorStatus ? <ErrorBar errorCode={props.error.errorCode} errorMsg={props.error.errorMsg}></ErrorBar> : null}
 
       {/* Statistics Panel */}
       <div className="flex flex-wrap justify-center align-middle">
@@ -428,6 +429,9 @@ const cached = { AOC: {}, form: {}, error: {} };
 // Store the timestamp (ms) of the last time that we pulled information from various external API endpoints.
 let lastAPIPull;
 
+// Store the path to the current year's frozen leaderboard.
+let frozenLeaderboardFileName = './generatedData/frozenLeaderboard2023.json';
+
 // Store whether an error has occurred when making our API calls.
 // Documentation: https://nextjs.org/docs/advanced-features/custom-error-page#500-page
 let errorOccurred = { "errorStatus": false, "errorCode": 0, "errorMsg": "" };
@@ -440,45 +444,49 @@ export async function getServerSideProps() {
     return { props: { AOC: cached.AOC, form: cached.form, error: cached.error } };
   }
 
-  // TO DO:
-  // Right now our leaderboard data is coming from a local file because it contains the frozen 2023 leaderboard data.
-  // Two things still need to be done to get this ready for 2023.
-  // (1) We need to change this from reading a file to making API calls to fetch Google Form Data & AOC data.
-  //     With Axios we can easily make several API calls. There is a good discussion of this here: https://stackoverflow.com/questions/52669596/promise-all-with-axios.
-  // (2) We need to "freeze" the data after a certain date (namely January 1st).
-  //    This "freeze" feature could be as simple as -> if the current date is beyond 12:00:01 AM on January 1st, 
-  //    make one last API call, run a script to remove any stars after the 12:00:01 AM deadline, and then
-  //    write the data to a file named generatedData/frozenLeaderboard2023.json with the contents of
-  //    { props: { AOC: ..., form: ..., error: ...} }. Then if the current time is past 12:00:01 AM on January 1st, 
-  //    AND the generatedData/frozenLeaderboard2023.json file already exits, we know we can just read from the file
-  //    to get our "frozen" leaderboard data.
+  // If the current Unix Epoch is past  January 1, 2024 12:00:01 AM GMT-06:00 (1704088801), then our competition has ended.
+  if (Date.now() / 1000 > 1704088801) {
+    // Variable that will store the file contents of our frozen leaderboard.
+    let frozenLeaderboard = ""
 
-  // // Variable that will store the file contents of our frozen leaderboard.
-  // let frozenLeaderboard = ""
+    // If our JSON file containing the frozen leaderboard data exists, then let's use that.
+    if (fs.existsSync(frozenLeaderboardFileName)) {
 
-  // try {
-  //   // Grab the frozen leaderboard data and parse it into a JSON object.
-  //   frozenLeaderboard = await readFile('./generatedData/frozenLeaderboard2022.json', { encoding: 'utf-8' });
-  //   frozenLeaderboard = JSON.parse(frozenLeaderboard);
+      try {
+        // Grab the frozen leaderboard data and parse it into a JSON object.
+        frozenLeaderboard = await fs.promises.readFile(frozenLeaderboardFileName, { encoding: 'utf-8' });
+        frozenLeaderboard = JSON.parse(frozenLeaderboard);
 
-  // } catch (e) {
-  //   errorOccurred = { "errorStatus": true, "errorCode": 13, "errorMsg": "Unable to read local leaderboard file. It probably doesn't exist." };
-  // }
+      } catch (e) {
+        errorOccurred = { "errorStatus": true, "errorMsg": `Unable to read frozen leaderboard file. ${e}.` };
+      }
 
-  // // If no error occurred with our API calls, then update our cached response.
-  // if (!errorOccurred.errorStatus) {
-  //   cached.AOC = frozenLeaderboard.props.AOC;
-  //   cached.form = frozenLeaderboard.props.form;
-  // }
+      // If no error occurred with reading the local file, then update our cached response.
+      if (!errorOccurred.errorStatus) {
+        cached.AOC = frozenLeaderboard.props.AOC;
+        cached.form = frozenLeaderboard.props.form;
+      }
 
-  // // Update our error status every time our cache is expired.
-  // cached.error = errorOccurred;
+      // Update our error status every time our cache is expired.
+      cached.error = errorOccurred;
 
-  // // Update the time of our most recent API call.
-  // // Do this no matter the outcome of our API calls to prevent overwhelming external APIs.
-  // lastAPIPull = Date.now() + 1 * 60 * 1000;
+    } else {
+      // TO DO:
+      // Call APIs to get most recent AOC data & form submissions. 
+      // Clean AOC data to remove any stars completed after the deadline.
+      // Update cached variable with this new, clean data.
+      // Write data to ./generatedData/frozenLeaderboard2023.json in the necessary format.
+    }
 
-  // return { props: { AOC: cached.AOC, form: cached.form, error: cached.error } };
+  } else {
+    // TO DO:
+    // Call APIs to get most recent AOC data & form submissions. 
+    // Update cached variable with this data from the APIs.
+  }
 
-  return { props: { AOC: {}, form: {}, error: {} } };
+  // Update the time of our most recent API call.
+  // Do this no matter the outcome of our API calls to prevent overwhelming external APIs.
+  lastAPIPull = Date.now() + 15 * 60 * 1000;
+
+  return { props: { AOC: cached.AOC, form: cached.form, error: cached.error } };
 }
