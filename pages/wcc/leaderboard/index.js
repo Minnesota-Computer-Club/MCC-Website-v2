@@ -1,5 +1,4 @@
 // Import required dependencies.
-import axios from "axios";
 import { fromUnixTime } from 'date-fns';
 // import { readFile } from 'fs/promises';
 import Head from 'next/head';
@@ -43,6 +42,12 @@ export default function WCCLeaderboard(props) {
   // The column definitions for the school leaderboard table.
   const schoolCompetitionColumns = [
     columnHelper.accessor('school', {
+      filterFn: customFilterFunction["multiSelect"],
+      meta: {
+        filterComponent: customFilterComponent["multiSelect"],
+      },
+    }),
+    columnHelper.accessor('city', {
       filterFn: customFilterFunction["multiSelect"],
       meta: {
         filterComponent: customFilterComponent["multiSelect"],
@@ -138,6 +143,9 @@ export default function WCCLeaderboard(props) {
   // This is where we will do ALL of our data massaging.
   // Data is passed into the page as props, and we can do our manipulations and then set data into their appropriate React state variables.
   React.useEffect(() => {
+    // This array should be updated to include the names of any competitors that we want to exclude completely.
+    const excludedCompetitors = []
+
     // The page sets isLoading to true by default. We have to set it to false once we are done with our data manipulations.
     if (isLoading) {
       // Grab all Advent of Code users returned from the AOC Leaderboards.
@@ -160,6 +168,10 @@ export default function WCCLeaderboard(props) {
 
       // Examine every Advent of Code user from our leaderboards.
       for (const aocUser of aocUsers) {
+        // Exclude any competitor in our list of excluded competitors.
+        if (excludedCompetitors.includes(aocUser.name)) {
+          continue;
+        }
 
         // Ensure that we can find a form submission for this Advent of Code competitor.
         if (!isUserValid(props.form, aocUser)) {
@@ -172,10 +184,11 @@ export default function WCCLeaderboard(props) {
 
         // Deconstruct applicable information from the user's form submission.
         const {
-          ['What is your first and last name?']: name,
-          ['Which school do you attend?']: school,
-          ['Are you participating as part of a team or as an individual?']: team,
-          ['What is your team name? (Make sure all your team members use the same team name!)']: teamName,
+          ['Your First and Last Name']: name,
+          ['Your School']: school,
+          ['City']: city,
+          ['Your Competitor Type']: team,
+          ['Your Team Name']: teamName,
         } = formDataForAocUser;
 
         // Deconstruct applicable information from the user's Advent of Code account.
@@ -190,7 +203,7 @@ export default function WCCLeaderboard(props) {
 
         // Initialize a new property for the school if it has not previously been seen.
         if (!schools[school]) {
-          schools[school] = { school: school, stars: 0, participants: 0 }
+          schools[school] = { school: school, city: city, stars: 0, participants: 0 }
         }
 
         // Add this Advent of Code competitors stars to the school's count, bump the participant count for the school, and update the school's efficiency.
@@ -429,7 +442,13 @@ const cached = { AOC: {}, form: {}, error: {} };
 // Store the timestamp (ms) of the last time that we pulled information from various external API endpoints.
 let lastAPIPull;
 
-// Store the path to the current year's frozen leaderboard.
+// Store the path to the generated file storing data pulled from the private AoC Leaderboard files.
+let generatedLeaderboardData = './generatedData/generatedAocLeaderboard2023.json';
+
+// Store the path to the generated file storing data pulled from registration form.
+let generatedFormData = './generatedData/generatedGoogleFormSubmissions2023.json';
+
+// Store the path to the current year's frozen leaderboard file.
 let frozenLeaderboardFileName = './generatedData/frozenLeaderboard2023.json';
 
 // Store whether an error has occurred when making our API calls.
@@ -440,48 +459,84 @@ let errorOccurred = { "errorStatus": false, "errorCode": 0, "errorMsg": "" };
 // Documentation: https://nextjs.org/docs/basic-features/data-fetching/get-server-side-props
 export async function getServerSideProps() {
   // Return our cached responses if our cached response has not expired. 
-  if (lastAPIPull > Date.now()) {
-    return { props: { AOC: cached.AOC, form: cached.form, error: cached.error } };
-  }
+  // if (lastAPIPull > Date.now()) {
+  //   return { props: { AOC: cached.AOC, form: cached.form, error: cached.error } };
+  // }
 
-  // If the current Unix Epoch is past  January 1, 2024 12:00:01 AM GMT-06:00 (1704088801), then our competition has ended.
-  if (Date.now() / 1000 > 1704088801) {
-    // Variable that will store the file contents of our frozen leaderboard.
-    let frozenLeaderboard = ""
+  // If our JSON file containing the frozen leaderboard data exists, then let's use that and "freeze" the leaderboard.
+  if (fs.existsSync(frozenLeaderboardFileName)) {
+    let frozenLeaderboard = "";
 
-    // If our JSON file containing the frozen leaderboard data exists, then let's use that.
-    if (fs.existsSync(frozenLeaderboardFileName)) {
+    try {
+      // Grab the frozen leaderboard data and parse it into a JSON object.
+      frozenLeaderboard = await fs.promises.readFile(frozenLeaderboardFileName, { encoding: 'utf-8' });
+      frozenLeaderboard = JSON.parse(frozenLeaderboard);
+
+    } catch (e) {
+      errorOccurred = { "errorStatus": true, "errorMsg": `Unable to read frozen leaderboard file. ${e}.` };
+    }
+
+    // If no error occurred with reading the local file, then update our cached response.
+    if (!errorOccurred.errorStatus) {
+      cached.AOC = frozenLeaderboard.props.AOC;
+      cached.form = frozenLeaderboard.props.form;
+    }
+
+    // Update our error status every time our cache is expired.
+    cached.error = errorOccurred;
+
+  } else {
+    // Attempt to read data from the generated file containing our AoC leaderboard data.
+    if (fs.existsSync(generatedLeaderboardData)) {
+      let generatedLeaderboard = "";
 
       try {
-        // Grab the frozen leaderboard data and parse it into a JSON object.
-        frozenLeaderboard = await fs.promises.readFile(frozenLeaderboardFileName, { encoding: 'utf-8' });
-        frozenLeaderboard = JSON.parse(frozenLeaderboard);
+        // Grab the leaderboard data and parse it into a JSON object.
+        generatedLeaderboard = await fs.promises.readFile(generatedLeaderboardData, { encoding: 'utf-8' });
+        generatedLeaderboard = JSON.parse(generatedLeaderboard);
 
       } catch (e) {
-        errorOccurred = { "errorStatus": true, "errorMsg": `Unable to read frozen leaderboard file. ${e}.` };
+        errorOccurred = { "errorStatus": true, "errorMsg": `Unable to read leaderboard file. ${e}.` };
+      }
+
+      if (generatedLeaderboard.lastUpdatedAt <= Math.floor(Date.now() / 1000) - 3600) {
+        errorOccurred = { "errorStatus": true, "errorMsg": `AoC data has not been updated since ${new Date(generatedLeaderboard.lastUpdatedAt * 1000)}.` };
       }
 
       // If no error occurred with reading the local file, then update our cached response.
       if (!errorOccurred.errorStatus) {
-        cached.AOC = frozenLeaderboard.props.AOC;
-        cached.form = frozenLeaderboard.props.form;
+        cached.AOC = generatedLeaderboard.members;
       }
 
       // Update our error status every time our cache is expired.
       cached.error = errorOccurred;
-
-    } else {
-      // TO DO:
-      // Call APIs to get most recent AOC data & form submissions. 
-      // Clean AOC data to remove any stars completed after the deadline.
-      // Update cached variable with this new, clean data.
-      // Write data to ./generatedData/frozenLeaderboard2023.json in the necessary format.
     }
 
-  } else {
-    // TO DO:
-    // Call APIs to get most recent AOC data & form submissions. 
-    // Update cached variable with this data from the APIs.
+    // Attempt to read data from the generated file containing our Google Form registration data.
+    if (fs.existsSync(generatedFormData)) {
+      let generatedForm = "";
+
+      try {
+        // Grab the leaderboard data and parse it into a JSON object.
+        generatedForm = await fs.promises.readFile(generatedFormData, { encoding: 'utf-8' });
+        generatedForm = JSON.parse(generatedForm);
+
+      } catch (e) {
+        errorOccurred = { "errorStatus": true, "errorMsg": `Unable to read registration form file. ${e}.` };
+      }
+
+      if (generatedForm.lastUpdatedAt <= Math.floor(Date.now() / 1000) - 3600) {
+        errorOccurred = { "errorStatus": true, "errorMsg": `Competitor data has not been updated since ${new Date(generatedForm.lastUpdatedAt * 1000)}.` };
+      }
+
+      // If no error occurred with reading the local file, then update our cached response.
+      if (!errorOccurred.errorStatus) {
+        cached.form = generatedForm.competitors;
+      }
+
+      // Update our error status every time our cache is expired.
+      cached.error = errorOccurred;
+    }
   }
 
   // Update the time of our most recent API call.
