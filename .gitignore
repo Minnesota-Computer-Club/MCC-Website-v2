@@ -7,6 +7,9 @@
 # Ignore the genereatedData directory. Users's can create their own local test data to mimic real data.
 /generatedData/
 
+# Ignore any authorization tokens present in the /jobs directory. Only the production server should have authorization.
+/jobs/*.json
+
 # Ignore dependency information. That's why we use `npm` to do this for us.
 /node_modules
 
