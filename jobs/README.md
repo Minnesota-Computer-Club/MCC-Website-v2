@@ -1,5 +1,19 @@
 # Jobs
-This directory stores various shell and Python scripts that the website needs to have up-to-date data via a cron job or is used manually to manually review and clean data.
+This directory stores various scripts that the website needs to have up-to-date data via a cron job or is used manually to manually review and clean data.
+
+## generateFrozenLeaderboard.js
+**Used Via**: Manually
+
+**Required node.js Libraries**: `fs dotenv`
+
+**Required Env. Vars within `.env`**: 
+- `AOC_YEAR`
+
+This is a node.js script that will read both `../generatedData/generatedAocLeaderboard<year>.json` and `../generatedData/generatedGoogleFormSubmissions<year>.json` to generate `../generatedData/frozenLeaderboard<year>.json` file. 
+
+During execution of the script, it will print out any AoC stars that were earned by competitors AFTER our competition ended and it will print out the names of anyone who submitted the registration Google Form AFTER the competition ended. This information then needs to be used to manually remove those stars and/or registrants from the `../generatedData/frozenLeaderboard<year>.json` file.
+
+Once these changes have been made, the `../generatedData/frozenLeaderboard<year>.json` file needs to be placed into the `generatedData/` directory on the server via `scp`. Once this file is present, the leaderboard will be "frozen" with the next API call that will occur in the next 15 minutes.
 
 ## pullAocLeaderboards.py
 **Used Via**: Cron Job (Every 15 Minutes `*/15 * * * *`)
