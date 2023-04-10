@@ -12,7 +12,7 @@ export default function ErrorBar(props) {
           <XCircleIcon className="h-5 w-5 text-red-400" aria-hidden="true" />
         </div>
         <div className="ml-3">
-          <h3 className="text-sm font-medium text-red-800">Error{props.errorCode ? " " + String(props.errorCode) : ""}: {props.errorMsg ? props.errorMsg : ""} Please contact a website administrator in the MCC Discord server.</h3>
+          <h3 className="text-sm font-medium text-red-800">Error{props.errorCode ? " " + String(props.errorCode) : ""}: {props.errorMsg ? props.errorMsg : ""} Please contact a website administrator.</h3>
         </div>
       </div>
     </div>
