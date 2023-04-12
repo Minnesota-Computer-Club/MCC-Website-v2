@@ -19,7 +19,7 @@ export default function multiSelectDropdown(column, table) {
     let containsUndefined = false;
 
     for (const value of uniqueValuesWithCounts) {
-      if (value[0] == undefined) {
+      if (value[0] == undefined || String(value[0]).trim() == "") {
         containsUndefined = true;
       } else {
         uniqueValuesOnly.push(value[0]);
