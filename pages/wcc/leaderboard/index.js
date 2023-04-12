@@ -459,9 +459,9 @@ let errorOccurred = { "errorStatus": false, "errorCode": 0, "errorMsg": "" };
 // Documentation: https://nextjs.org/docs/basic-features/data-fetching/get-server-side-props
 export async function getServerSideProps() {
   // Return our cached responses if our cached response has not expired. 
-  // if (lastAPIPull > Date.now()) {
-  //   return { props: { AOC: cached.AOC, form: cached.form, error: cached.error } };
-  // }
+  if (lastAPIPull > Date.now()) {
+    return { props: { AOC: cached.AOC, form: cached.form, error: cached.error } };
+  }
 
   // If our JSON file containing the frozen leaderboard data exists, then let's use that and "freeze" the leaderboard.
   if (fs.existsSync(frozenLeaderboardFileName)) {
