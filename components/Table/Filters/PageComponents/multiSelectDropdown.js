@@ -38,6 +38,12 @@ export default function multiSelectDropdown(column, table) {
     column.setFilterValue(selected);
   }, [selected]);
 
+  React.useEffect(() => {
+    if (!column.getFilterValue()) {
+      setSelected([])
+    }
+  }, [column.getFilterValue()]);
+
   return (
     <div className="">
       <Listbox value={selected} onChange={setSelected} multiple>
