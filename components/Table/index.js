@@ -77,7 +77,8 @@ export default function Table(props) {
       <div className='space-y-2'>
         <button
           type="button"
-          className="rounded bg-purple-100 px-2 py-1 text-xs font-semibold text-darkpurple shadow-sm hover:bg-purple-200"          onClick={() => {
+          className="rounded bg-purple-100 px-2 py-1 text-xs font-semibold text-darkpurple shadow-sm hover:bg-purple-200"
+          onClick={() => {
             table.resetColumnFilters();
             table.resetSorting();
           }}
