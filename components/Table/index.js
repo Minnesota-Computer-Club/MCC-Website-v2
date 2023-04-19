@@ -51,6 +51,9 @@ export default function Table(props) {
   const table = useReactTable({
     data,
     columns,
+    initialState: {
+      sorting: props.initialSortState || []
+    },
     state: {
       columnFilters,
       sorting,
@@ -70,7 +73,22 @@ export default function Table(props) {
   return (
     <div className="p-2 relative">
       {/* Styling of the Table comes from: https://flowbite.com/docs/components/tables */}
-      <p>{table.getRowModel().flatRows.length} of {table.getCoreRowModel().flatRows.length} Competitors</p>
+
+      <div className='space-y-2'>
+        <button
+          type="button"
+          className="rounded bg-purple-100 px-2 py-1 text-xs font-semibold text-darkpurple shadow-sm hover:bg-purple-200"
+          onClick={() => {
+            table.resetColumnFilters();
+            table.resetSorting();
+          }}
+        >
+          Reset Table
+        </button>
+
+        <p>{table.getRowModel().flatRows.length} of {table.getCoreRowModel().flatRows.length} Competitors</p>
+      </div>
+
       <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           {table.getHeaderGroups().map(headerGroup => (
