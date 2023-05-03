@@ -11,7 +11,7 @@ require('dotenv').config();
 const isDevBuild = process.env.NODE_ENV !== 'production';
 
 // Declare constants used by the server.
-const port = isDevBuild ? 4444 : 443;
+const port = isDevBuild ? 4444 : 3013;
 
 // Create an instance of an Express server that will orchestrate our server.
 const app = express();
