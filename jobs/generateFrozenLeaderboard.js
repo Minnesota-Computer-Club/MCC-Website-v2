@@ -23,7 +23,7 @@ for (contestant of Object.keys(mergedData['members'])) {
     for (star of Object.keys(mergedData['members'][contestant]['completion_day_level'][day])) {
       // If the user completed a star, check that it was completed before the deadline of our WCC competition.
       // If the star was completed after, print the contestant's name, AOC Puzzle Number, star from that day, and the timestamp the star was completed.
-      if (mergedData['members'][contestant]['completion_day_level'][day][star]['get_star_ts'] > 1704090001) {
+      if (mergedData['members'][contestant]['completion_day_level'][day][star]['get_star_ts'] > 1704088801) {
         console.log("[AoC Id]:", mergedData['members'][contestant]['id'], "[AoC Name]:", mergedData['members'][contestant]['name'], "[Puzzle #]:", day, "[Star #]:", star, "[Unix Timestamp]:", mergedData['members'][contestant]['completion_day_level'][day][star]['get_star_ts']);
       }
     }
@@ -43,7 +43,7 @@ for (registrant of Object.keys(mergedData['competitors'])) {
   let submissionDate = Date.parse(mergedData['competitors'][registrant]['Timestamp']);
 
   // If the submission date is past our deadline, then we need to print out the name and time so we can manually clean up the data.
-  if (submissionDate / 1000 > 1704090001) {
+  if (submissionDate / 1000 > 1704088801) {
     console.log("[Registrant Name]:", mergedData['competitors'][registrant]["Your First and Last Name"], "[Form Submission Date/Time]:", new Date(submissionDate).toLocaleString());
   }
 }

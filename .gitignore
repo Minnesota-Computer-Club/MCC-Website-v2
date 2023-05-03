@@ -4,6 +4,9 @@
 # Ignore ALL .DS_Store files.
 *.DS_Store
 
+# Ignore the scratchpad directory. This is where user's can dump local backups and developmental notes.
+/scratchpad/
+
 # Ignore the genereatedData directory. Users's can create their own local test data to mimic real data.
 /generatedData/
 
