@@ -61,7 +61,7 @@ This command is going to start a local development server for you to make change
 
 There are several other commands defined in `package.json` that you should be familiar with:
 - `npm run build`: This command can be run if you want to generate an optimized version of the website for production. Read more at [https://nextjs.org/docs/deployment](https://nextjs.org/docs/deployment).
-- `npm run start`: This command will start our custom Express server and run a production environment locally. **Note:** This requires that you have built a local production version of the server by running `npm run build`.
+- `npm run start`: This command will start and run a production environment locally. **Note:** This requires that you have built a local production version of the server by running `npm run build`.
 
 ### Obtaining Environmental Variables
 Some parts of this repository require certain environmental variables to be set. Most commonly, you will run into this with the cron jobs found in `jobs/`.
