@@ -12,6 +12,7 @@ This is the repository for Version 2 (v2) of the site. If you are looking for v1
   - [Create `.env` File for Environmental Secrets](#create-env-file-for-environmental-secrets)
   - [Run Project](#run-project)
   - [Additional Commands to Know](#additional-commands-to-know)
+  - [Obtaining Environmental Variables](#obtaining-environmental-variables)
   - [Miscellaneous](#miscellaneous)
 - [Contributing](#contributing)
 - [References and Acknowledgements](#references-and-acknowledgements)
@@ -60,12 +61,18 @@ This command is going to start a local development server for you to make change
 
 There are several other commands defined in `package.json` that you should be familiar with:
 - `npm run build`: This command can be run if you want to generate an optimized version of the website for production. Read more at [https://nextjs.org/docs/deployment](https://nextjs.org/docs/deployment).
-- `NODE_ENV=production node index.js`: This command will start our custom Express server and run a production environment locally. **Note:** This requires that you have built a local production version of the server by running `npm run build`.
+- `npm run start`: This command will start and run a production environment locally. **Note:** This requires that you have built a local production version of the server by running `npm run build`.
+
+### Obtaining Environmental Variables
+Some parts of this repository require certain environmental variables to be set. Most commonly, you will run into this with the cron jobs found in `jobs/`.
+
+If you are looking for these environmental variables, please reach out to a website administrator in the MCC Discord Server. We will help identify which env. vars. you need and which ones are only intended for use by our production web server.
 
 ### Miscellaneous
 Below are any miscellaneous notes that you should be aware of when attempting to run this project locally.
 
 - All raw data that is used anywhere on the site (leaderboard data, form responses, etc.) are kept in a directory called `/generatedData` at the root level. This directory is being excluded (.gitignore-d) from this repository to protect personal information. You can create this directory at any time and create mock data `.json` files as needed to run a local development environment. If there are any questions about this, please raise those questions in the MCC Discord Server.
+- Any miscellaneous notes or files that you want to keep locally can be put in a directory called `scratchpad` at the root of the project. This directory has been gitignore'd as a way for local developers to keep their own thoughts and files while ensuring that nothing is checked into the source repository.
 
 ## Contributing
 All contributions are welcome! 
