@@ -7,8 +7,15 @@ export default function Homepage() {
     <>
       <Head>
         <title>Home - Minnesota Computer Club</title>
-        <meta name="title" property="og:title" content="Home - Minnesota Computer Club" key="title" />
-        <meta name="description" property="org:description" content="The official website of the Minnesota Computer Club (MCC)." key="description" />
+
+        <meta name="title" property="og:title" content="Home - Minnesota Computer Club" />
+        <meta name="description" property="og:description" content="The official website of the Minnesota Computer Club (MCC)." />
+        
+        <meta property="og:url" content="https://mncomputerclub.com" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://mncomputerclub.com/mcc-logo-transparent-300x300.png" />
+
+        <meta name="twitter:card" content="summary"></meta>
       </Head>
 
       <div className="pt-2 text-center">
