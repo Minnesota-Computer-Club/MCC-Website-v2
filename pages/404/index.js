@@ -10,8 +10,15 @@ export default function NotFound() {
     <>
       <Head>
         <title>404 - Minnesota Computer Club</title>
-        <meta name="title" property="og:title" content="404 - Minnesota Computer Club" key="title" />
-        <meta name="description" property="org:description" content="Unable to find the Minnesota Computer Club (MCC) content that you were looking for." key="description" />
+
+        <meta name="title" property="og:title" content="404 - Minnesota Computer Club" />
+        <meta name="description" property="og:description" content="Unable to find the Minnesota Computer Club (MCC) content that you were looking for." />
+        
+        <meta property="og:url" content="https://mncomputerclub.com" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://mncomputerclub.com/mcc-logo-transparent-300x300.png" />
+
+        <meta name="twitter:card" content="summary"></meta>
       </Head>
 
       <div className="flex min-h-full flex-col pt-16 pb-12">
