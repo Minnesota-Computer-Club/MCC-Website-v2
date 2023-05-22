@@ -33,4 +33,5 @@ jobs:
 
     steps:
     - name: Notify Lodestar
-      run: curl -H "Content-Type: application/json" -d '{"content":"A [Github Action](<https://github.com/${{github.repository}}/commit/${{github.sha}}/checks/${{github.run_id}}>) has successfully deployed an new version to the MCC web server."}' ${{ secrets.LODESTAR_HOOK }}
+      run: |
+      curl -H "Content-Type: application/json" -d '{"content":"A [Github Action](<https://github.com/${{github.repository}}/commit/${{github.sha}}/checks/${{github.run_id}}>) has successfully deployed an new version to the MCC web server."}' ${{ secrets.LODESTAR_HOOK }}
