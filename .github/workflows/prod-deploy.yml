@@ -23,3 +23,18 @@ jobs:
           git pull
           npm run build
           pm2 reload mcc-web
+
+  job_two:
+    needs: job_one
+
+    name: Lodestar Notification
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Notify Lodestar
+      run: |
+      curl \
+        -H "Content-Type: application/json" \
+        -d '{"content":"A [Github Action](<https://github.com/${{github.repository}}/commit/${{github.sha}}/checks/${{github.run_id}}>) has successfully deployed an new version to the MCC web server."}' \
+        ${{ secrets.LODESTAR_HOOK }}

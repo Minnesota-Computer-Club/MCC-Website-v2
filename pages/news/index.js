@@ -14,8 +14,14 @@ export default function News(props) {
     <>
       <Head>
         <title>News - Minnesota Computer Club</title>
-        <meta name="title" property="og:title" content="News - Minnesota Computer Club" key="title" />
-        <meta name="description" property="org:description" content="Read the latest announcements and updates from the Minnesota Computer Club." key="description" />
+        <meta name="title" property="og:title" content="News - Minnesota Computer Club" />
+        <meta name="description" property="og:description" content="Read the latest announcements and updates from the Minnesota Computer Club." />
+
+        <meta property="og:url" content="https://mncomputerclub.com" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://mncomputerclub.com/mcc-logo-transparent-300x300.png" />
+
+        <meta name="twitter:card" content="summary"></meta>
       </Head>
 
       <div className="text-center mb-4">
