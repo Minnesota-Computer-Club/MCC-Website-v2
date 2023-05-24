@@ -36,5 +36,5 @@ jobs:
       run: |
         curl \
           -H "Content-Type: application/json" \
-          -d '{"content":"🚀 A [Github Action](<https://github.com/${{github.repository}}/commit/${{github.sha}}/checks/${{github.run_id}}>) has successfully deployed an new version to the MCC web server."}' \
+          -d '{"content":"🚀 A [Github Action](<https://github.com/${{github.repository}}/commit/${{github.sha}}/checks/${{github.run_id}}>) has successfully deployed a new version of the MCC website."}' \
           ${{ secrets.LODESTAR_HOOK }}

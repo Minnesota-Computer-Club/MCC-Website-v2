@@ -9,7 +9,6 @@ This is the repository for Version 2 (v2) of the site. If you are looking for v1
   - [Install Dependencies](#install-dependencies)
   - [Clone Repo](#clone-repo)
   - [Install npm Packages](#install-npm-packages)
-  - [Create `.env` File for Environmental Secrets](#create-env-file-for-environmental-secrets)
   - [Run Project](#run-project)
   - [Additional Commands to Know](#additional-commands-to-know)
   - [Obtaining Environmental Variables](#obtaining-environmental-variables)
@@ -42,9 +41,6 @@ The MCC website requires several npm packages to be installed. Those packages ca
 
     npm install
 
-### Create `.env` File for Environmental Secrets
-A major change with the v2 website is that all secrets are stored locally in a `.env` file that you need to create at the root of this project's directory. There is an example `.env.example` file included with this repository. You can copy its contents into a new `.env` file that you create and replace the temporary secrets with real values (as you need them).
-
 **Note:** Depending on what you are attempting to accomplish, this step may or may not be necessary. If you have any questions, please raise them in the MCC Discord Server.
 
 ### Run Project
@@ -66,20 +62,20 @@ There are several other commands defined in `package.json` that you should be fa
 ### Obtaining Environmental Variables
 Some parts of this repository require certain environmental variables to be set. Most commonly, you will run into this with the cron jobs found in `jobs/`.
 
-If you are looking for these environmental variables, please reach out to a website administrator in the MCC Discord Server. We will help identify which env. vars. you need and which ones are only intended for use by our production web server.
+If you are looking for these environmental variables, please reach out to a website administrator in the MCC Discord Server. We will help understand what you are attempting to accomplish and help set up your local development environment. **Note: The scripts in the `jobs/` directory are only intended to be run on our production server, so you should never need to touch anything in this directory.**
 
 ### Miscellaneous
 Below are any miscellaneous notes that you should be aware of when attempting to run this project locally.
 
-- All raw data that is used anywhere on the site (leaderboard data, form responses, etc.) are kept in a directory called `/generatedData` at the root level. This directory is being excluded (.gitignore-d) from this repository to protect personal information. You can create this directory at any time and create mock data `.json` files as needed to run a local development environment. If there are any questions about this, please raise those questions in the MCC Discord Server.
+- All raw data that is used anywhere on the site (leaderboard data, form responses, etc.) are kept in a directory called `/generatedData` at the root level. This directory is being excluded (.gitignore-d) from this repository to protect personal information. You can create this directory at any time and create mock data `.json` files as needed to run a local development environment. If there are any questions about this, please raise those questions in the MCC Discord Server and we will help get you set up.
 - Any miscellaneous notes or files that you want to keep locally can be put in a directory called `scratchpad` at the root of the project. This directory has been gitignore'd as a way for local developers to keep their own thoughts and files while ensuring that nothing is checked into the source repository.
 
 ## Contributing
-All contributions are welcome! 
+All contributions are welcome! The ultimate goal is that the students of the club will run and maintain the site. Help is always available from mentors in the club.
 
-First, open an issue to discuss what contributions you would like to make. 
+To get started with a contribution, [open an issue on GitHub](https://github.com/Minnesota-Computer-Club/MCC-Website-v2/issues) to discuss what contribution(s) you would like to make. Then fork this repository and make all contributions in a `feature/` branch as a PR will be required before any changes are merged into the `main` branch. 
 
-Start by forking this repository and make all contributions in a `feature/` branch as a PR will be required before any changes are merged into the `main` branch.
+**If you need help getting started, please ask for help in the MCC Discord server! We would love to help get you working on something that you find interesting!**
 
 ## References and Acknowledgements
 This project does use several SVGs from [https://heroicons.com/](https://heroicons.com/) and templates from [Tailwind UI](https://tailwindui.com/). These are great resources to use in your next project!
