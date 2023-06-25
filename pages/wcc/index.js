@@ -6,58 +6,7 @@ import PageTitle from '/components/PageTitle';
 
 export default function WinterCodingChallenge() {
 
-  const sponsors = [
-    {
-      "key": "IBM",
-      "imageURL": "/ibm-logo.png",
-      "linkURL": "https://www.ibm.com"
-    },
-    {
-      "key": "Sargent's Garden Center",
-      "imageURL": "/sargents-logo.png",
-      "linkURL": "https://sargentsgardens.com"
-    },
-    {
-      "key": "Winona State University",
-      "imageURL": "/winona-state-logo.png",
-      "linkURL": "https://www.winona.edu"
-    },
-    {
-      "key": "Flapdoodles Ice Cream",
-      "imageURL": "/flapdoodles-logo.png",
-      "linkURL": "https://www.flapdoodlesicecream.com"
-    },
-    {
-      "key": "Tyrol Ski and Sports",
-      "imageURL": "/tyrol-logo.png",
-      "linkURL": "https://www.tyrolskishop.com"
-    },
-    {
-      "key": "Newt's",
-      "imageURL": "/newts-logo.png",
-      "linkURL": "https://creativecuisineco.com/newts/"
-    },
-    {
-      "key": "Pi Wood Fired Pizza",
-      "imageURL": "/pi-logo.png",
-      "linkURL": "https://live4pi.com"
-    },
-    {
-      "key": "Rochester Community and Technical College",
-      "imageURL": "/rctc-logo.png",
-      "linkURL": "https://www.rctc.edu"
-    },
-    {
-      "key": "Mayo Clinic",
-      "imageURL": "/mayo-logo.png",
-      "linkURL": "https://www.mayoclinic.org"
-    },
-    {
-      "key": "Cafe Aqui",
-      "imageURL": "/aqui-logo.png",
-      "linkURL": "https://aqui.coffeeaq"
-    },
-  ];
+  const sponsors = [];
 
   return (
     <>
@@ -154,29 +103,9 @@ export default function WinterCodingChallenge() {
         <h2 id="sponsors" className="pt-4 text-2xl font-medium">
           Sponsors
         </h2>
-        <p>Below are the generous sponsors of our 2022 competition. Thank you to each and every one of them! This competition would not be possible without them. If your business would like to donate a prize and be listed on our site and t-shirts, please email <a href="mailto:info@mncomputerclub.com?subject=WCC Sponsorship" target="_blank" className="font-bold underline decoration-darkpurple decoration-2">info@mncomputerclub.com</a>.</p>
+        <p>This competition would not be possible without our generous sponsors! If your business would like to donate a prize and be listed as a sponsor of this competition below, please email <a href="mailto:info@mncomputerclub.com?subject=WCC Sponsorship" target="_blank" className="font-bold underline decoration-darkpurple decoration-2">info@mncomputerclub.com</a>.</p>
       </div>
-
-      {/* This logo cloud was created by modifying a Tailwind UI Logo Cloud component. */}
-      {/* https://tailwindui.com/components/marketing/sections/logo-clouds */}
-      <div className="mx-auto max-w-7xl py-10 px-6 lg:px-8">
-        <p className="text-center text-lg font-semibold text-gray-600 dark:text-gray-50">
-          Thank you to our generous sponsors!
-        </p>
-
-        {/* Sponsors */}
-        <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-0.5 md:grid-cols-3 lg:mt-8">
-          {
-            sponsors.sort((a, b) => a.key.localeCompare(b.key)).map((sponsor, indx) => {
-              return (
-                <div key={sponsor.key} className="col-span-1 flex justify-center bg-gray-50 py-8 px-8">
-                  <a href={sponsor.linkURL} target="_blank"><img className="max-h-12" src={sponsor.imageURL} alt={sponsor.key + " Logo"} /></a>
-                </div>
-              );
-            })
-          }
-        </div>
-      </div>
+      
     </>
   );
 }
