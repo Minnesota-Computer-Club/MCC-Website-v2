@@ -59,6 +59,11 @@ export default function WinterCodingChallenge() {
             <li>You can use any programming language you like. This competition is set up to be language-agnostic.</li>
             <li>You may not share your solutions with anyone outside of your group. Again, it is up to the honor of the individual to maintain the integrity of the tournament.</li>
             <li>Ties in the number of stars will be settled with AOC score (shortest time to complete puzzle).</li>
+            <li>Competitors may not use AI to solve problems for them.</li>
+              <ul className="list-disc mt-2 ml-10">
+                <li>The official Advent of Code (AoC) competition added a new rule this year about not using AI to get on the global leaderboard. You can read more about this new rule <a href="https://adventofcode.com/about#ai_leaderboard" target='_blank' className='font-bold underline decoration-darkpurple decoration-2'>here</a>.</li>
+                <li>Our Winter Coding Challenge is going to also add this new rule to the competition starting this year. We cannot stop you from using AI to help you understand components of a puzzle, but we ask that you do not use it to solve the puzzle for you. It is up to the honor of the individual students not to cheat in this regard. This challenge is all about learning and becoming a better programer with other students - using AI to solve puzzles for you doesn't achieve that.</li>
+              </ul>
           </ul>
         </div>
       </div>
