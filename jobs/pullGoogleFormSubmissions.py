@@ -55,7 +55,7 @@ def main():
               else:
                 user[columns[i]] = row[i].strip()
 
-      user["City"] = user["Your School"].split("|")[1].strip() or ""
+      user["City"] = user["Your School"].split("|")[1].strip() if len(user["Your School"].split("|")) > 1 else ""
       user["Your School"] = user["Your School"].split("|")[0].strip() or ""
 
       competitors[user['Your AoC Username'].strip()] = user
