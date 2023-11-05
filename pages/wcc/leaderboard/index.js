@@ -144,7 +144,7 @@ export default function WCCLeaderboard(props) {
   // Data is passed into the page as props, and we can do our manipulations and then set data into their appropriate React state variables.
   React.useEffect(() => {
     // This array should be updated to include the names of any competitors that we want to exclude completely.
-    const excludedCompetitors = []
+    const excludedCompetitors = ["Michael Weiner"]
 
     // The page sets isLoading to true by default. We have to set it to false once we are done with our data manipulations.
     if (isLoading) {
