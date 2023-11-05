@@ -1,6 +1,5 @@
 // Import required dependencies.
 import Head from 'next/head';
-import Badge from '/components/Badge';
 import InfoBar from '/components/InformationBar';
 import PageTitle from '/components/PageTitle';
 
@@ -23,7 +22,6 @@ export default function WinterCodingChallenge() {
       </Head>
 
       <div className="text-center mb-4">
-        <Badge msg={`Returning in December ${(new Date()).getUTCFullYear()}`}></Badge>
         <PageTitle title={"Winter Coding Challenge (WCC)"}></PageTitle>
       </div>
 
@@ -96,7 +94,8 @@ export default function WinterCodingChallenge() {
         <h2 id="register" className="pt-4 text-2xl font-medium">
           Register
         </h2>
-        <p>Registration for the 2023 competition will open in November. Registration closes when our competition ends January 1st at 12:00:01 AM CST/UTC-6<sup>st</sup>.</p>
+        <p>Registration for the 2023 Winter Coding Challenge is now open! If you would like to compete in this year's competition, please register using this Google Form: <a href='https://forms.gle/953YD2a4fbbsvp9V6' target='_blank' className='font-bold underline decoration-darkpurple decoration-2'>https://forms.gle/953YD2a4fbbsvp9V6</a>. The Google Form will walk you through everything that you need to do and it should only take about 5-10 minutes. Please reach out to a MCC mentor if you have any questions or issues!
+        </p>
       </div>
 
       <div className="pt-4">

@@ -302,7 +302,7 @@ export default function WCCLeaderboard(props) {
       </Head>
 
       <div className="text-center mb-4">
-        <Badge msg={`Returning in December ${(new Date()).getUTCFullYear()}`}></Badge>
+        <Badge color='green' msg={`Registration for WCC 2023 is now open - register today!`}></Badge>
         <PageTitle title="WCC Leaderboard"></PageTitle>
       </div>
 
@@ -320,7 +320,7 @@ export default function WCCLeaderboard(props) {
             <div>
               <div className="mb-4">
                 <Countdown
-                  prefix="WCC Starts In"
+                  prefix="First Puzzle Unlocks In"
                   endDate={fromUnixTime(1701493201)}
                   endMessage="The 2023 WCC has begun!"
                 />
@@ -328,15 +328,15 @@ export default function WCCLeaderboard(props) {
                 {/* <Countdown
                   prefix="Next AOC Puzzle Unlocks In"
                   endDate={getPuzzleDate()}
-                  repeatUntil={fromUnixTime(1671948001)}
+                  repeatUntil={fromUnixTime(1703484001)}
                   endMessage="Advent of Code 2023 has ended."
-                />
+                /> */}
 
                 <Countdown
                   prefix="WCC Ends In"
-                  endDate={fromUnixTime(1672552801)}
+                  endDate={fromUnixTime(1704088801)}
                   endMessage="The 2023 WCC has ended."
-                /> */}
+                />
               </div>
               <div>
                 <p><span className="font-bold">Total Stars Earned</span>: {statisticTotalStars ? starIcon + " " + statisticTotalStars : "---"}</p>
