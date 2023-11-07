@@ -1,5 +1,6 @@
 // Import required dependencies.
 import Head from 'next/head';
+import Script from 'next/script';
 import { Inter } from 'next/font/google';
 import { ThemeProvider } from 'next-themes';
 
@@ -24,6 +25,21 @@ function MyApp({ Component, pageProps }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
       </Head>
+
+      {/* Reference: https://nextjs.org/docs/messages/next-script-for-ga */}
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-34P0W59SPZ"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-34P0W59SPZ');
+        `}
+      </Script>
 
       <ThemeProvider enableSystem={true} attribute="class">
         <Header className={`${inter.variable} font-sans`} />
