@@ -12,33 +12,22 @@ YEAR = str(os.getenv('AOC_YEAR'))
 LEADERBOARDS = os.getenv('AOC_LEADERBOARDS')
 LEADERBOARDS = LEADERBOARDS.split(',')
 
-PARSED_LEADERBOARDS = []
+SESSION_TOKEN = os.getenv('AOC_TOKEN')
 
-for leaderboard in LEADERBOARDS:
-  data = leaderboard.split('|')
-  PARSED_LEADERBOARDS.append(
-    {
-      'LEADERBOARD-ID': data[0].strip(),
-      'SESSION-TOKEN': data[1].strip()
-    }
-  )
-
-OUTPUT_FILE_NAME = 'generatedAocLeaderboard' + YEAR + '.json'
+OUTPUT_FILE_NAME = 'generatedAocLeaderboard' + YEAR + 'Unfiltered.json'
 OUTPUT_FILE_PATH = os.path.abspath(os.path.join(os.path.dirname(os.path.dirname(__file__)), 'generatedData', OUTPUT_FILE_NAME))
 
 def main():
   dataToWrite = {}
 
-  for leaderboard in PARSED_LEADERBOARDS:
-    id = str(leaderboard['LEADERBOARD-ID'])
-
+  for leaderboard in LEADERBOARDS:
     response = requests.get(
-      f'https://adventofcode.com/{YEAR}/leaderboard/private/view/{id}.json',
+      f'https://adventofcode.com/{YEAR}/leaderboard/private/view/{leaderboard}.json',
       headers={
         'User-Agent': 'https://github.com/Minnesota-Computer-Club/MCC-Website-v2 by Minnesota Computer Club'
       },
       cookies={
-        'session': leaderboard['SESSION-TOKEN']
+        'session': SESSION_TOKEN
       }
     )
 
