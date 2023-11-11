@@ -19,12 +19,13 @@ Once these changes have been made, the `../generatedData/frozenLeaderboard<year>
 **Used Via**: Cron Job (Every 15 Minutes `*/15 * * * *`)
 
 **Required Python3 Libraries**: `pip3 install python-dotenv`
+**Required Command Line Tools**: `apt-get install jq`
 
 **Required Env. Vars within `.env`**: 
 - `AOC_YEAR`
 - `AOC_LEADERBOARDS`
 
-This is a Python script that will be used to query all of the private MCC AoC leaderboards to grab the latest scoring data. This script outputs a JSON file at `../generatedData/generatedAocLeaderboard<year>.json`.
+This is a Python script that will be used to query all of the private MCC AoC leaderboards to grab the latest scoring data across ALL of the private leaderboards. This script outputs a JSON file at `../generatedData/generatedAocLeaderboard<year>Unfiltered.json`.
 
 ## pullGoogleFormSubmissions.py
 **Used Via**: Cron Job (Every 15 Minutes `*/15 * * * *`)
