@@ -69,6 +69,14 @@ export default function WinterCodingChallenge() {
       </div>
 
       <div className="pt-4">
+        <h2 id="register" className="pt-4 text-2xl font-medium">
+          Register
+        </h2>
+        <p>Registration for the 2023 Winter Coding Challenge is now open! If you would like to compete in this year's competition, please register using this Google Form: <a href='https://forms.gle/953YD2a4fbbsvp9V6' target='_blank' className='font-bold underline decoration-darkpurple decoration-2'>https://forms.gle/953YD2a4fbbsvp9V6</a>. The Google Form will walk you through everything that you need to do and it should only take about 5-10 minutes. Please reach out to a MCC mentor if you have any questions or issues!
+        </p>
+      </div>
+
+      <div className="pt-4">
         <h2 className="pt-4 text-2xl font-medium">
           Prizes
         </h2>
@@ -93,14 +101,6 @@ export default function WinterCodingChallenge() {
             <li><span className="font-bold">1<sup>st</sup> Place School:</span> An engraving on a perpetual trophy to be displayed at their school.</li>
           </ul>
         </div>
-      </div>
-
-      <div className="pt-4">
-        <h2 id="register" className="pt-4 text-2xl font-medium">
-          Register
-        </h2>
-        <p>Registration for the 2023 Winter Coding Challenge is now open! If you would like to compete in this year's competition, please register using this Google Form: <a href='https://forms.gle/953YD2a4fbbsvp9V6' target='_blank' className='font-bold underline decoration-darkpurple decoration-2'>https://forms.gle/953YD2a4fbbsvp9V6</a>. The Google Form will walk you through everything that you need to do and it should only take about 5-10 minutes. Please reach out to a MCC mentor if you have any questions or issues!
-        </p>
       </div>
 
       <div className="pt-4">
