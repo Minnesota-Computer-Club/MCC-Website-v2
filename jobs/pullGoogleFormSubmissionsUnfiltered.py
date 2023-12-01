@@ -21,7 +21,7 @@ GOOGLE_API_SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 GOOGLE_SPREADSHEET_ID = '1P6gUL4k4OkwHsIItXA04sQRef5oK-9sRn0sT--HHSiI'
 GOOGLE_SPREADSHEET_RANGE = 'Form Responses 1'
 
-EXCLUDED_COLUMNS = ['Your Discord Username (Optional)']
+EXCLUDED_COLUMNS = ['Your School Email Address']
 
 OUTPUT_FILE_NAME = 'generatedGoogleFormSubmissions' + YEAR + 'Unfiltered.json'
 OUTPUT_FILE_PATH = os.path.abspath(os.path.join(os.path.dirname(os.path.dirname(__file__)), 'generatedData', OUTPUT_FILE_NAME))
