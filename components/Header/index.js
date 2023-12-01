@@ -101,6 +101,14 @@ export default function Header(props) {
 
         {/* CTA Wrapper */}
         <div className="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
+          <a href="https://forms.gle/953YD2a4fbbsvp9V6" target="_blank">
+            <button className="relative inline-flex items-center justify-center p-0.5 mb-1.5 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-blue-700 to-blue-300 hover:text-white dark:text-white">
+              <span className="relative px-5 py-2 transition-all ease-in duration-75 bg-white dark:bg-slate-900 rounded-md group-hover:bg-opacity-0">
+                Register Now!
+              </span>
+            </button>
+          </a>
+
           <a href="mailto:info@mncomputerclub.com?subject=Requesting an Invite to MCC Discord Server" target="_blank">
             <button className="relative inline-flex items-center justify-center p-0.5 mb-1.5 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-darkpurple to-medpurple group-hover:from-darkpurple group-hover:to-medpurple hover:text-white dark:text-white">
               <span className="relative px-5 py-2 transition-all ease-in duration-75 bg-white dark:bg-slate-900 rounded-md group-hover:bg-opacity-0">

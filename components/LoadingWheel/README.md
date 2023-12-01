@@ -14,11 +14,10 @@ export default function Example(props) {
   const [isLoading, setIsLoading] = React.useState(true);
 
   React.useEffect(() => {
-      // Do some sort of data manipulation.
+    // Do some sort of data manipulation.
 
-      // When all data manipulation is done, update isLoading to hide the spinner.
-      setIsLoading(false);
-    }
+    // When all data manipulation is done, update isLoading to hide the spinner.
+    setIsLoading(false);
   }, [isLoading]);
 
   return (
@@ -37,13 +36,13 @@ export default function Example(props) {
 
 **Required props are marked with `*`.**
 
-| Name                   | Type      | Default                       | Description                                                                        |
-| ---------------------- | ----------| ----------------------------- | ---------------------------------------------------------------------------------- |
+| Name | Type | Default | Description |
+|------| -----|---------|-------------|
 
 
 ### Additional Usage Information
 
-- It is most likely that you will want to conditionally render this component. This means that you will only want to show the <LoadingWheel> component until some condition is met, and then display your page content. The example usage above demonstrates a rudimentary example of this.
+- It is most likely that you will want to conditionally render this component. This means that you will only want to show the `<LoadingWheel>` component until some condition is met, and then display your page content. The example usage above demonstrates a rudimentary example of this.
 
 ### General Guidelines & Recommendations
 
