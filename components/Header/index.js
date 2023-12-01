@@ -12,7 +12,7 @@ import { classNames, navigationItems } from '/components/utils';
 
 export default function Header(props) {
   return (
-    <Popover className={` relative border-b-2 border-gray-50 ${props.className}`}>
+    <Popover className={` relative border-b-2 border-gray-200 bg-gray-100 dark:border-slate-600 dark:bg-slate-800 ${props.className}`}>
       <div className="flex items-center justify-between p-4 md:justify-start md:space-x-10">
 
         {/* Logo Wrapper */}
@@ -143,6 +143,7 @@ export default function Header(props) {
                     alt="Minnesota Computer Club"
                   />
                 </div>
+
                 <div className="-mr-2">
                   <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none">
                     <span className="sr-only">Close menu</span>
@@ -150,6 +151,7 @@ export default function Header(props) {
                   </Popover.Button>
                 </div>
               </div>
+
               <div className="grid grid-cols-1 gap-4">
                 {navigationItems.map((navItem) => (
                   // The following Github Issue explains (very thoroughly) why we need Popover.Button components here.
@@ -162,6 +164,14 @@ export default function Header(props) {
 
               {/* Mobile CTA Wrapper */}
               <div className="mt-6">
+                <a href="https://forms.gle/953YD2a4fbbsvp9V6" target="_blank">
+                  <button className="relative inline-flex items-center justify-center w-full p-0.5 mb-1.5 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-blue-700 to-blue-300 hover:text-white dark:text-white">
+                    <span className="relative w-full px-5 py-2 transition-all ease-in duration-75 bg-white dark:bg-slate-900 rounded-md group-hover:bg-opacity-0">
+                      Register Now!
+                    </span>
+                  </button>
+                </a>
+
                 <a href="mailto:info@mncomputerclub.com?subject=Requesting an Invite to MCC Discord Server" target="_blank" className="w-full">
                   <button className="relative inline-flex items-center justify-center w-full p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-darkpurple to-medpurple group-hover:from-darkpurple group-hover:to-medpurple hover:text-white dark:text-white">
                     <span className="relative w-full px-5 py-2 transition-all ease-in duration-75 bg-white dark:bg-slate-900 rounded-md group-hover:bg-opacity-0">

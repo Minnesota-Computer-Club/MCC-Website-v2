@@ -12,7 +12,7 @@ module.exports = {
       colors: {
         darkpurple: {
           DEFAULT: '#7060A9',
-        }, 
+        },
         medpurple: {
           DEFAULT: '#B997DD',
         },

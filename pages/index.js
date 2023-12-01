@@ -10,7 +10,7 @@ export default function Homepage() {
 
         <meta name="title" property="og:title" content="Home - Minnesota Computer Club" />
         <meta name="description" property="og:description" content="The official website of the Minnesota Computer Club (MCC)." />
-        
+
         <meta property="og:url" content="https://mncomputerclub.com" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://mncomputerclub.com/mcc-logo-transparent-300x300.png" />
