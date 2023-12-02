@@ -67,14 +67,14 @@ export default function WCCLeaderboard(props) {
       },
     }),
     columnHelper.accessor('stars', {
-      cell: info => `${`${starIcon} ${Number(info.getValue() || 0).toFixed(2)}`}`,
+      cell: info => `${`${starIcon} ${Number(Number(info.getValue() || 0).toFixed(2))}`}`,
     }),
     columnHelper.accessor('participants', {
-      cell: info => (Number(info.getValue() || 0).toFixed(2)),
+      cell: info => (Number(Number(info.getValue() || 0).toFixed(2))),
       header: "Total Participants"
     }),
     columnHelper.accessor('efficiency', {
-      cell: info => Number(info.getValue() || 0).toFixed(2),
+      cell: info => Number(Number(info.getValue() || 0).toFixed(2)),
       header: "Efficiency"
     }),
   ];
