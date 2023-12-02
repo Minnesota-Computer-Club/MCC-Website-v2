@@ -86,7 +86,7 @@ export default function WCCLeaderboard(props) {
       cell: info => {
         return (
           <div>
-            {info.getValue().map((member, indx) => { return <p key={indx}>{member}</p> })}
+            {info.getValue().map((member, indx) => { return <p key={indx}><span class="font-semibold">{member[0]}</span>{member[1] != "" ? " (" + member[1] + ")" : ""}</p> })}
           </div>
         );
       },
@@ -231,7 +231,7 @@ export default function WCCLeaderboard(props) {
 
           // Only add this person to the team if they are not already added.
           if (!teams[teamName].teamMembers.some(teamMember => teamMember === name)) {
-            teams[teamName].teamMembers.push(name);
+            teams[teamName].teamMembers.push([name, school.split("|")[0]]);
 
             teams[teamName].stars += stars;
 
