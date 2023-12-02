@@ -18,6 +18,19 @@ import Badge from "/components/Badge";
 import ExpandingPanel from "/components/ExpandingPanel";
 import LoadingWheel from "/components/LoadingWheel";
 
+// Credit: https://smhatre59.medium.com/how-to-deep-flatten-object-in-javascript-16bc5a22382
+function deepFlattenToObject(obj, prefix = '') {
+  return Object.keys(obj).reduce((acc, k) => {
+    const pre = prefix.length ? prefix + '.' : '';
+    if (typeof obj[k] === 'object' && obj[k] !== null) {
+      Object.assign(acc, deepFlattenToObject(obj[k], pre + k));
+    } else {
+      acc[pre + k] = obj[k];
+    }
+    return acc;
+  }, {});
+}
+
 // Used for column definitions for each table.
 const columnHelper = createColumnHelper();
 
@@ -30,7 +43,7 @@ export default function WCCLeaderboard(props) {
   // Will store the AoC usernames that don't have a form submission.
   const [competitorsMissingFormSubmission, setCompetitorsMissingFormSubmission] = React.useState(new Set());
 
-  // Will store various statistics that we want to display.
+  // Will store various competition-wide statistics that we want to display.
   const [statisticTotalCompetitors, setStatisticTotalCompetitors] = React.useState(0);
   const [statisticTotalStars, setStatisticTotalStars] = React.useState(0);
   const [statisticAverageStars, setStatisticAverageStars] = React.useState(0);
@@ -54,10 +67,10 @@ export default function WCCLeaderboard(props) {
       },
     }),
     columnHelper.accessor('stars', {
-      cell: info => `${`${starIcon} ${info.getValue()}`}`,
+      cell: info => `${`${starIcon} ${Number(info.getValue() || 0).toFixed(2)}`}`,
     }),
     columnHelper.accessor('participants', {
-      cell: info => Math.floor(Number(info.getValue() || 0)),
+      cell: info => (Number(info.getValue() || 0).toFixed(2)),
       header: "Total Participants"
     }),
     columnHelper.accessor('efficiency', {
@@ -86,7 +99,7 @@ export default function WCCLeaderboard(props) {
       cell: info => {
         return (
           <div>
-            {info.getValue().map((member, indx) => { return <p key={indx}><span class="font-semibold">{member[0]}</span>{member[1] != "" ? " (" + member[1] + ")" : ""}</p> })}
+            {info.getValue().map((member, indx) => { return <p key={indx}><span className="font-semibold">{member[0]}</span>{member[1] != "" ? " (" + member[1] + ")" : ""}</p> })}
           </div>
         );
       },
@@ -139,7 +152,6 @@ export default function WCCLeaderboard(props) {
     }),
   ];
 
-  // Create school data from underlying AOC and form data.
   // This is where we will do ALL of our data massaging.
   // Data is passed into the page as props, and we can do our manipulations and then set data into their appropriate React state variables.
   React.useEffect(() => {
@@ -148,80 +160,52 @@ export default function WCCLeaderboard(props) {
 
     // The page sets isLoading to true by default. We have to set it to false once we are done with our data manipulations.
     if (isLoading) {
-      // Grab all Advent of Code users returned from the AOC Leaderboards.
-      const aocUsers = Object.values(props.AOC);
+      const aocUsers = Object.values(props.AOC); // Grab all AoC users returned from the AOC Leaderboards.
 
-      // Create object that will have a key for every unique school found in our form submissions.
-      // schoolName: { ... }
       const schools = {};
-
-      // Create object that will have a key for every unique team found in our form submissions.
-      // teamName : [ { teamMember1 }, {teamMember2}, {teamMember3} ]
       const teams = {};
-
-      // Create an array that will store an object for every unique individual found in our form submissions.
       const individualCompetitors = [];
 
-      // Variables that will be used to track certain statistics.
+      // Variables that will be used to track competition-wide statistics.
       let totalNumberOfCompetitors = 0;
       let totalNumberOfStarsCompleted = 0;
 
-      // Examine every Advent of Code user from our leaderboards.
+      // Examine every AoC user from our private AoC leaderboards.
       for (const aocUser of aocUsers) {
-        // Exclude any competitor in our list of excluded competitors.
         if (excludedCompetitors.includes(aocUser.name)) {
           continue;
         }
 
-        // Ensure that we can find a form submission for this Advent of Code competitor.
         if (!isUserValid(props.form, aocUser)) {
           competitorsMissingFormSubmission.add(aocUser.name);
           continue;
         }
 
-        // Grab the form submission for this Advent of Code competitor.
-        const formDataForAocUser = props.form[aocUser.name];
+        const formDataForAocUser = props.form[aocUser.name]; // Grab the GF submission for this AoC competitor.
 
-        // Deconstruct applicable information from the user's form submission.
+        // Deconstruct applicable information from the user's GF submission.
         const {
           ['Your First and Last Name']: name,
           ['Your School']: school,
           ['City']: city,
-          ['Your Competitor Type']: team,
+          ['Your Competitor Type']: competitorType,
           ['Your Team Name']: teamName,
         } = formDataForAocUser;
 
-        // Deconstruct applicable information from the user's Advent of Code account.
+        // Deconstruct applicable information from the user's AoC account.
         const { stars, last_star_ts } = aocUser;
 
-        // Update statistics for valid users ONLY.
+        // Update competition-wide statistics for valid users ONLY.
         totalNumberOfCompetitors += 1;
         totalNumberOfStarsCompleted += stars;
-
-        // *************
-        // Compile School Competition Information
-
-        // Initialize a new property for the school if it has not previously been seen.
-        if (!schools[school]) {
-          schools[school] = { school: school, city: city, stars: 0, participants: 0 }
-        }
-
-        // Add this Advent of Code competitors stars to the school's count, bump the participant count for the school, and update the school's efficiency.
-        schools[school].stars += stars;
-        schools[school].participants += 1;
-        schools[school].efficiency = (schools[school].stars) / (schools[school].participants);
-        // *************
-
-        // *************
-        // Compile Team Competition Information
-
-        // If the competitor listed a team in their form submission, we will treat them as competing in a team.
-        if (team == "Team") {
-
+        
+        if (competitorType == "Team") { // If the competitor listed a team in their GF submission, we will treat them as competing in a team.
           // If we haven't seen this team before, lets initialize it.
           if (!teams[teamName]) {
             teams[teamName] = {
               teamMembers: [],
+              schoolsRepresented: [],
+              duplicatedStarsCompleted: [],
               stars: 0,
               percentageOfStarsEarned: 0,
               last_star_ts: 0,
@@ -231,28 +215,21 @@ export default function WCCLeaderboard(props) {
 
           // Only add this person to the team if they are not already added.
           if (!teams[teamName].teamMembers.some(teamMember => teamMember === name)) {
-            teams[teamName].teamMembers.push([name, school.split("|")[0]]);
 
-            teams[teamName].stars += stars;
+            teams[teamName].teamMembers.push([name, school.split("|")[0]]);
+            teams[teamName].schoolsRepresented.push(school.split("|")[0]);
+            teams[teamName].duplicatedStarsCompleted = teams[teamName].duplicatedStarsCompleted.concat(Object.keys(deepFlattenToObject(aocUser.completion_day_level)).filter((value) => !value.includes("star_index")))
+            teams[teamName].stars = new Set(teams[teamName].duplicatedStarsCompleted).size;
+            teams[teamName].percentageOfStarsEarned = parseFloat((teams[teamName].stars / (MAX_STARS) * 100).toFixed(3));
 
             // We want to store the most recent last_star_ts between all of the teammates.
             if (last_star_ts > teams[teamName].last_star_ts) {
               teams[teamName].last_star_ts = last_star_ts;
             }
-
-            teams[teamName].percentageOfStarsEarned = parseFloat((teams[teamName].stars / (MAX_STARS * teams[teamName].teamMembers.length) * 100).toFixed(3));
           }
-        }
-        // *************
-
-        // *************
-        // Compile Individual Competition Information
-
-        // If the competitor didn't list a team in their form submission, they are an individual competitor.
-        if (team != "Team") {
-
-          // Initialize an object for a new individual.
-          const individual = {
+        } else { // Otherwise, we will treat them as competing as an individual.
+          
+          const individual = { // Initialize an object for a new individual.
             "name": name,
             "stars": stars,
             "school": school,
@@ -261,9 +238,30 @@ export default function WCCLeaderboard(props) {
 
           // Add the individual to our array of individual competitors.
           individualCompetitors.push(individual);
-
         }
-        // *************
+        
+        if (!schools[school]) { // Initialize a new property for the competitor's school, if it has not previously been seen.
+          schools[school] = { school: school, city: city, stars: 0, participants: 0, efficiency: 0 }
+        }
+      }
+
+      // Update School Competition Based on Individual Competitors
+      for (const individual of individualCompetitors){ 
+        schools[individual.school].stars += individual.stars
+        schools[individual.school].participants += 1;
+      }
+
+      // Update School Competition Based on Team Competitors
+      for (var team of Object.keys(teams)) {
+        for (var school of teams[team].schoolsRepresented) {
+          schools[school].stars += new Set(teams[team].duplicatedStarsCompleted).size / teams[team].teamMembers.length
+          schools[school].participants += 1 / teams[team].teamMembers.length;
+        }
+      }
+
+      // Calculate Each Schools' Efficiency
+      for (var school of Object.keys(schools)) {
+        schools[school].efficiency = (schools[school].stars) / (schools[school].participants);
       }
 
       // Set state for the school wide competition leaderboard data.
@@ -378,12 +376,12 @@ export default function WCCLeaderboard(props) {
 
         {/* FAQ for School Competition Scoring */}
         <ExpandingPanel title="FAQs" label="How is the school wide competition scored?">
-          <p>Schools are ranked by their total number of stars. Tie breaks will be done using the efficiency of the school's competitors. This can be calculated by taking the total number of stars earned by students in that school and dividing it by the total number of participants for the school. All competitors count as 1 participant for their school and each competitor's stars count equally towards their school's start total.</p>
+          <p>Schools are ranked by their total number of stars. Tie breaks will be done using the efficiency of the school's competitors. This can be calculated by taking the total number of stars earned by students in that school and dividing it by the total number of participants for the school. Individual competitors count as 1 participant for their school. Competitors on a team count as 1/n (where n is the size of their team) of a participant for their school since teams work together to act as a single participant in the competition.</p>
         </ExpandingPanel>
 
         {/* FAQ for Team Competition Scoring */}
         <ExpandingPanel label="How is the team competition scored?">
-          <p>Teams are ranked by the total percentage of the possible stars the team has earned. This metric can be calculated by totaling the number of stars that each team member has earned and dividing that sum by (50 * the size of the team). Tie breaks will use the timestamp for the team's most recently earned star (i.e. the team who earned their star first will win the tie break). Each member of the team counts as 1 team member, and each person's stars count towards the team's total equally.</p>
+          <p>Teams are ranked by the total percentage of the possible stars the team has earned. This metric can be calculated by totaling the number of non-overlapping stars that each team member has earned and dividing that sum by 50. Tie breaks will use the timestamp for the team's most recently earned star (i.e. the team who earned their star first will win the tie break). Each member's stars count towards the team's total equally - so work together to conquer and divide!</p>
         </ExpandingPanel>
 
         {/* FAQ for Individual Competition Scoring */}
