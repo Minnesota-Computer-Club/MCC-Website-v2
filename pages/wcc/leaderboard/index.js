@@ -180,7 +180,11 @@ export default function WCCLeaderboard(props) {
           competitorsMissingFormSubmission.add(aocUser.name);
           continue;
         }
-
+        
+        if (aocUser.stars == 0) {
+          continue;
+        }
+ 
         const formDataForAocUser = props.form[aocUser.name]; // Grab the GF submission for this AoC competitor.
 
         // Deconstruct applicable information from the user's GF submission.
