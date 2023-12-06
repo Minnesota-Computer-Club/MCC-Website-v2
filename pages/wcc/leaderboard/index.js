@@ -87,13 +87,17 @@ export default function WCCLeaderboard(props) {
         filterComponent: customFilterComponent["multiSelect"],
       },
     }),
-    columnHelper.accessor('percentageOfStarsEarned', {
-      cell: info => `${`${info.getValue()}%`}`,
-      header: '% of Stars Earned'
-    }),
     columnHelper.accessor('stars', {
       cell: info => `${`${starIcon} ${info.getValue()}`}`,
       header: 'Total Star Count'
+    }),
+    columnHelper.accessor('avg_rank', {
+      cell: info => Number(Number(info.getValue()).toFixed(2)),
+      header: 'Average Finish Place',
+    }),
+    columnHelper.accessor('percentageOfStarsEarned', {
+      cell: info => `${`${info.getValue()}%`}`,
+      header: '% of Stars Earned'
     }),
     columnHelper.accessor('teamMembers', {
       cell: info => {
@@ -106,18 +110,6 @@ export default function WCCLeaderboard(props) {
       header: 'Team',
       enableColumnFilter: false,
       enableSorting: false,
-    }),
-    columnHelper.accessor('last_star_ts', {
-      cell: info => {
-        if (info.getValue() > 0) {
-          return (new Date(info.getValue() * 1000)).toISOString();
-        } else {
-          return "";
-        }
-      },
-      header: 'Last Star',
-      footer: info => info.column.id,
-      enableColumnFilter: false,
     }),
   ];
 
@@ -132,23 +124,15 @@ export default function WCCLeaderboard(props) {
     columnHelper.accessor('stars', {
       cell: info => `${`${starIcon} ${info.getValue()}`}`,
     }),
+    columnHelper.accessor('avg_rank', {
+      cell: info => Number(Number(info.getValue()).toFixed(2)),
+      header: 'Average Finish Place',
+    }),
     columnHelper.accessor('school', {
       filterFn: customFilterFunction["multiSelect"],
       meta: {
         filterComponent: customFilterComponent["multiSelect"],
       },
-    }),
-    columnHelper.accessor('last_star_ts', {
-      cell: info => {
-        if (info.getValue() > 0) {
-          return (new Date(info.getValue() * 1000)).toISOString();
-        } else {
-          return "";
-        }
-      },
-      header: 'Last Star',
-      footer: info => info.column.id,
-      enableColumnFilter: false,
     }),
   ];
 
@@ -197,7 +181,7 @@ export default function WCCLeaderboard(props) {
         } = formDataForAocUser;
 
         // Deconstruct applicable information from the user's AoC account.
-        const { stars, last_star_ts } = aocUser;
+        const { stars, avg_rank } = aocUser;
 
         // Update competition-wide statistics for valid users ONLY.
         totalNumberOfCompetitors += 1;
@@ -212,7 +196,7 @@ export default function WCCLeaderboard(props) {
               duplicatedStarsCompleted: [],
               stars: 0,
               percentageOfStarsEarned: 0,
-              last_star_ts: 0,
+              avg_rank: 0,
               team: teamName,
             };
           }
@@ -225,19 +209,15 @@ export default function WCCLeaderboard(props) {
             teams[teamName].duplicatedStarsCompleted = teams[teamName].duplicatedStarsCompleted.concat(Object.keys(deepFlattenToObject(aocUser.completion_day_level)).filter((value) => !value.includes("star_index")))
             teams[teamName].stars = new Set(teams[teamName].duplicatedStarsCompleted).size;
             teams[teamName].percentageOfStarsEarned = parseFloat((teams[teamName].stars / (MAX_STARS) * 100).toFixed(3));
-
-            // We want to store the most recent last_star_ts between all of the teammates.
-            if (last_star_ts > teams[teamName].last_star_ts) {
-              teams[teamName].last_star_ts = last_star_ts;
-            }
+            teams[teamName].avg_rank += avg_rank;
           }
         } else { // Otherwise, we will treat them as competing as an individual.
           
           const individual = { // Initialize an object for a new individual.
             "name": name,
             "stars": stars,
+            "avg_rank": avg_rank,
             "school": school,
-            "last_star_ts": last_star_ts,
           }
 
           // Add the individual to our array of individual competitors.
@@ -257,6 +237,7 @@ export default function WCCLeaderboard(props) {
 
       // Update School Competition Based on Team Competitors
       for (var team of Object.keys(teams)) {
+        teams[team].avg_rank = teams[team].avg_rank / teams[team].teamMembers.length;
         for (var school of teams[team].schoolsRepresented) {
           schools[school].stars += new Set(teams[team].duplicatedStarsCompleted).size / teams[team].teamMembers.length
           schools[school].participants += 1 / teams[team].teamMembers.length;
@@ -287,7 +268,6 @@ export default function WCCLeaderboard(props) {
       setIsLoading(false);
     }
   }, [isLoading]);
-
 
   return (
     <>
@@ -361,7 +341,7 @@ export default function WCCLeaderboard(props) {
         {isLoading ?
           <LoadingWheel></LoadingWheel>
           :
-          <Table columns={teamCompetitorColumns} data={teamCompetitionData} initialSortState={[{ "id": "percentageOfStarsEarned", "desc": true, }, { "id": "last_star_ts", "desc": false, }]}></Table>
+          <Table columns={teamCompetitorColumns} data={teamCompetitionData} initialSortState={[{ "id": "stars", "desc": true, }, { "id": "avg_rank", "desc": false, }]}></Table>
         }
       </div>
 
@@ -371,7 +351,7 @@ export default function WCCLeaderboard(props) {
         {isLoading ?
           <LoadingWheel></LoadingWheel>
           :
-          <Table columns={individualCompetitorColumns} data={individualCompetitionData} initialSortState={[{ "id": "stars", "desc": true, }, { "id": "last_star_ts", "desc": false, }]}></Table>
+          <Table columns={individualCompetitorColumns} data={individualCompetitionData} initialSortState={[{ "id": "stars", "desc": true, }, { "id": "avg_rank", "desc": false, }]}></Table>
         }
       </div>
 
