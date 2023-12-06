@@ -27,21 +27,6 @@ export default function WinterCodingChallenge() {
 
       <div className="pt-4">
         <p>
-          Every December the Rochester Computer Club hosts a programming competition for middle and high school students. There are 25 puzzles for students to solve. These puzzles are from the well-known <a href="https://adventofcode.com" target="_blank" className="font-bold underline decoration-darkpurple decoration-2">Advent of Code</a>. A puzzle is released at midnight EST/UTC-5 (11:00:00 PM CST/UTC-6) once per day starting on December 1st and continuing through December 25th.
-        </p>
-
-        <div className="pt-4">
-          <InfoBar
-            msg="Minnesota Computer Club is not associated with Advent of Code. All puzzles are property of Advent of Code."
-            href="https://adventofcode.com"
-            linkLabel="View Advent of Code"
-          >
-          </InfoBar>
-        </div>
-      </div>
-
-      <div className="pt-4">
-        <p>
           Our Winter Coding Competition (WCC) starts with the first puzzle release at 11:00:00 PM CST/UTC-6 on December 1st and ends at 12:00:01 AM CST/UTC-6 on January 1st. This allows for some extra time to complete as many puzzles as possible. After our competition ends the leaderboard will be frozen, but you can continue to work on the Advent of Code puzzles! Our competition is only based on the number of problems completed (stars acquired), unless there is a tie that needs to be broken.
         </p>
       </div>
@@ -109,7 +94,25 @@ export default function WinterCodingChallenge() {
         </h2>
         <p>This competition would not be possible without our generous sponsors! If your business would like to donate a prize and be listed as a sponsor of this competition below, please email <a href="mailto:info@mncomputerclub.com?subject=WCC Sponsorship" target="_blank" className="font-bold underline decoration-darkpurple decoration-2">info@mncomputerclub.com</a>.</p>
       </div>
-      
+
+      <div className="pt-4">
+        <h2 id="sponsors" className="pt-4 text-2xl font-medium">
+          Advent of Code Disclaimer
+        </h2>
+
+        <p>
+          Every December the Rochester Computer Club hosts a programming competition for middle and high school students. There are 25 puzzles for students to solve. These puzzles are from the well-known <a href="https://adventofcode.com" target="_blank" className="font-bold underline decoration-darkpurple decoration-2">Advent of Code</a>. A puzzle is released at midnight EST/UTC-5 (11:00:00 PM CST/UTC-6) once per day starting on December 1st and continuing through December 25th.
+        </p>
+
+        <div className="pt-4">
+          <InfoBar
+            msg="Minnesota Computer Club is not associated with Advent of Code. All puzzles are property of Advent of Code."
+            href="https://adventofcode.com"
+            linkLabel="View Advent of Code"
+          >
+          </InfoBar>
+        </div>
+      </div>
     </>
   );
 }
