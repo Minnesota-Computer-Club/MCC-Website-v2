@@ -283,6 +283,11 @@ export default function WCCLeaderboard(props) {
         <meta name="twitter:card" content="summary"></meta>
       </Head>
 
+      <div className='w-100 flex flex-nowrap bg-darkpurple -mt-8 -mx-8 mb-8 font-bold text-slate-50 space-x-2'>
+        <p className='ml-8'>Previous Competitions: </p>
+        <a href='/wcc/leaderboard/2022/' className='m-auto underline hover:no-underline'>2022</a>
+      </div>
+
       <div className="text-center mb-4">
         <Badge color='green' msg={`Register Today for WCC 2023!`}></Badge>
         <PageTitle title="WCC Leaderboard"></PageTitle>
