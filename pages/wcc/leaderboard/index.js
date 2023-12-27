@@ -465,8 +465,8 @@ export async function getServerSideProps() {
 
     // If no error occurred with reading the local file, then update our cached response.
     if (!errorOccurred.errorStatus) {
-      cached.AOC = frozenLeaderboard.props.AOC;
-      cached.form = frozenLeaderboard.props.form;
+      cached.AOC = frozenLeaderboard.props.AOC.members;
+      cached.form = frozenLeaderboard.props.form.competitors;
     }
 
     // Update our error status every time our cache is expired.
