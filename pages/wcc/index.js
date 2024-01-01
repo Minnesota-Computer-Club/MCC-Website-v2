@@ -27,7 +27,7 @@ export default function WinterCodingChallenge() {
 
       <div className="pt-4">
         <p>
-          Our Winter Coding Competition (WCC) starts with the first puzzle release at 11:00:00 PM CST/UTC-6 on December 1st and ends at 12:00:01 AM CST/UTC-6 on January 1st. This allows for some extra time to complete as many puzzles as possible. After our competition ends the leaderboard will be frozen, but you can continue to work on the Advent of Code puzzles! Our competition is only based on the number of problems completed (stars acquired), unless there is a tie that needs to be broken.
+          Our Winter Coding Challenge (WCC) starts with the first puzzle release at 11:00:00 PM CST/UTC-6 on December 1st and ends at 12:00:01 AM CST/UTC-6 on January 1st. This allows for some extra time to complete as many puzzles as possible. After our competition ends the leaderboard will be frozen, but you can continue to work on the Advent of Code puzzles! Our competition is only based on the number of problems completed (stars acquired), unless there is a tie that needs to be broken.
         </p>
       </div>
 
