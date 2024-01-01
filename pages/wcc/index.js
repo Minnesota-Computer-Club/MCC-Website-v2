@@ -27,7 +27,7 @@ export default function WinterCodingChallenge() {
 
       <div className="pt-4">
         <p>
-          Our Winter Coding Competition (WCC) starts with the first puzzle release at 11:00:00 PM CST/UTC-6 on December 1st and ends at 12:00:01 AM CST/UTC-6 on January 1st. This allows for some extra time to complete as many puzzles as possible. After our competition ends the leaderboard will be frozen, but you can continue to work on the Advent of Code puzzles! Our competition is only based on the number of problems completed (stars acquired), unless there is a tie that needs to be broken.
+          Our Winter Coding Challenge (WCC) starts with the first puzzle release at 11:00:00 PM CST/UTC-6 on December 1st and ends at 12:00:01 AM CST/UTC-6 on January 1st. This allows for some extra time to complete as many puzzles as possible. After our competition ends the leaderboard will be frozen, but you can continue to work on the Advent of Code puzzles! Our competition is only based on the number of problems completed (stars acquired), unless there is a tie that needs to be broken.
         </p>
       </div>
 
@@ -35,7 +35,7 @@ export default function WinterCodingChallenge() {
         <h2 id="register" className="pt-4 text-2xl font-medium">
           Register
         </h2>
-        <p>Registration for the 2023 Winter Coding Challenge is now open! If you would like to compete in this year's competition, please register using this Google Form: <a href='https://forms.gle/953YD2a4fbbsvp9V6' target='_blank' className='font-bold underline decoration-darkpurple decoration-2'>https://forms.gle/953YD2a4fbbsvp9V6</a>. The Google Form will walk you through everything that you need to do and it should only take about 5-10 minutes. Please reach out to a MCC mentor if you have any questions or issues!
+        <p>The 2023 Winter Coding Challenge has officially ended. The leaderboard for this year's competition has been frozen as we review the results. Thank you to everyone for your interest and participation!
         </p>
       </div>
 

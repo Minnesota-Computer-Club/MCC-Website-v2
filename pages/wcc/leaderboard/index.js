@@ -289,7 +289,7 @@ export default function WCCLeaderboard(props) {
       </div>
 
       <div className="text-center mb-4">
-        <Badge color='green' msg={`Register Today for WCC 2023!`}></Badge>
+        {/* <Badge color='green' msg={`Register Today for WCC 2023!`}></Badge> */}
         <PageTitle title="WCC Leaderboard"></PageTitle>
       </div>
 
