@@ -2,7 +2,7 @@
 title: WCC 2023 Has Concluded!
 description: The ringing in of the New Year is an exciting time! It also means that our 2023 Winter Coding Challenge has officially come to a close.
 category: WCC
-updatedAt: 2024-01-02
+updatedAt: "2024-01-01T00:00:01-06:00"
 author: Michael Weiner
 ---
 

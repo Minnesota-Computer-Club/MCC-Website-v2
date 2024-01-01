@@ -5,7 +5,7 @@
 import Head from 'next/head';
 import PageTitle from '/components/PageTitle';
 
-import { format } from 'date-fns';
+import { format, parseISO } from 'date-fns';
 import fs from 'fs';
 import matter from 'gray-matter';
 
@@ -81,7 +81,8 @@ export async function getStaticProps() {
       title: data.title, 
       description: data.description, 
       category: data.category,
-      date: format(data.updatedAt, 'PPPP'), 
+      datetime: data.updatedAt,
+      date: format(parseISO(data.updatedAt), 'PPPP'),
       author: data.author
     };
 
