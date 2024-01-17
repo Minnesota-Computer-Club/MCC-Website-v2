@@ -52,7 +52,9 @@ const timeBetweenDates = (startDate, endDate, options) => {
 // If a startDate or endDate is not supplied, the current datetime is used.
 const countdownIsValid = (startDate, endDate) => {
   try {
-    return isWithinInterval(new Date(), { start: startDate || new Date(), end: endDate || new Date() });
+    const isWithinInterval = isWithinInterval(new Date(), { start: startDate || new Date(), end: endDate || new Date() });
+    const countdownIsNotNegative = Object.values(timeLeft).every(item => item >= -1);
+    return isWithinInterval && countdownIsNotNegative;
   } catch {
     return false;
   }
