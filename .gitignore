@@ -8,7 +8,7 @@
 /scratchpad/
 
 # Ignore the genereatedData directory. Users's can create their own local test data to mimic real data.
-/generatedData/
+**/generatedData
 
 # Ignore any authorization tokens present in the /jobs directory. Only the production server should have authorization.
 /jobs/*.json
