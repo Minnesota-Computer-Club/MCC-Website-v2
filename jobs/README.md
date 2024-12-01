@@ -1,7 +1,7 @@
 # Jobs
 This directory stores various scripts that the website needs to have up-to-date data via a cron job or is used manually to manually review and clean data.
 
-## generateFrozenLeaderboard.js
+## generateFrozenLeaderboard<YEAR>.js
 **Used Via**: Manually
 
 **Required node.js Libraries**: `fs dotenv`
@@ -15,7 +15,7 @@ During execution of the script, it will print out any AoC stars that were earned
 
 Once these changes have been made, the `../generatedData/frozenLeaderboard<year>.json` file needs to be placed into the `generatedData/` directory on the server via `scp`. Once this file is present, the leaderboard will be "frozen" with the next API call that will occur in the next 15 minutes.
 
-## pullAocLeaderboards.py
+## pullAocLeaderboards<year>.py
 **Used Via**: Cron Job (Every 15 Minutes `*/15 * * * *`)
 
 **Required Python3 Libraries**: `pip3 install python-dotenv`
@@ -27,7 +27,7 @@ Once these changes have been made, the `../generatedData/frozenLeaderboard<year>
 
 This is a Python script that will be used to query all of the private MCC AoC leaderboards to grab the latest scoring data across ALL of the private leaderboards. This script outputs a JSON file at `../generatedData/generatedAocLeaderboard<year>Unfiltered.json`.
 
-## pullGoogleFormSubmissions.py
+## pullGoogleFormSubmissions<year>.py
 **Used Via**: Cron Job (Every 15 Minutes `*/15 * * * *`)
 
 **Required Python3 Libraries**: `pip3 install google-auth-oauthlib google-api-python-client python-dotenv`
