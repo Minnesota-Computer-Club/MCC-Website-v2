@@ -39,3 +39,6 @@ This is a Python script that will be used to query all of the private MCC AoC le
 This is a Python script that will be used to query all of the entires in the Google Form storing our registered competitors. This script outputs a JSON file at `../generatedData/generatedGoogleFormSubmissions<year>.json`.
 
 **Note**: For this script to function correctly, it needs the Google Service Account Token `JSON` file added to the correct *private* directory.
+
+## Helpful Commands
+- `crontab -e`
