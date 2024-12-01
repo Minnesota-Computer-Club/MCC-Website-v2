@@ -35,7 +35,7 @@ export default function WinterCodingChallenge() {
         <h2 id="register" className="pt-4 text-2xl font-medium">
           Register
         </h2>
-        <p>The 2023 Winter Coding Challenge has officially ended. The leaderboard for this year's competition has been frozen as we review the results. Thank you to everyone for your interest and participation!
+        <p>The 2024 Winter Coding Challenge has officially started! To register your school, please email <a href="mailto:info@mncomputerclub.com?subject=WCC 2024 Registration" target="_blank" className="font-bold underline decoration-darkpurple decoration-2">info@mncomputerclub.com</a> OR visit our Discord server (linked above) to share your school's private leaderboard code.
         </p>
       </div>
 
@@ -47,16 +47,15 @@ export default function WinterCodingChallenge() {
 
         <div>
           <ul className="list-disc mt-2 ml-10">
-            <li>Students may enter this competition as individuals, or as a team, but not both. It is up to the honor of the individual students not to cheat in this regard.</li>
-            <li>Teams can be up to three people only. No exceptions, not even for besties.</li>
-            <li>You can use any programming language you like. This competition is set up to be language-agnostic.</li>
-            <li>You may not share your solutions with anyone outside of your group. Again, it is up to the honor of the individual to maintain the integrity of the tournament.</li>
-            <li>Ties in the number of stars will be settled with AOC score (shortest time to complete puzzle).</li>
+            <li>Each school will create their own private Advent of Code Leaderboard.</li>
+            <li>The private leaderboard code will be submitted to the Minnesota Computer Club.</li>
+            <li>The Minnesota Computer Club has a bot that will join the leaderboard to track stars earned for that school.</li>
             <li>Competitors may not use AI to solve problems for them.</li>
               <ul className="list-disc mt-2 ml-10">
-                <li>The official Advent of Code (AoC) competition added a new rule this year about not using AI to get on the global leaderboard. You can read more about this new rule <a href="https://adventofcode.com/about#ai_leaderboard" target='_blank' className='font-bold underline decoration-darkpurple decoration-2'>here</a>.</li>
-                <li>Our Winter Coding Challenge is going to also add this new rule to the competition starting this year. We cannot stop you from using AI to help you understand components of a puzzle, but we ask that you do not use it to solve the puzzle for you. It is up to the honor of the individual students not to cheat in this regard. This challenge is all about learning and becoming a better programer with other students - using AI to solve puzzles for you doesn't achieve that.</li>
+                <li>The official Advent of Code (AoC) competition has a rule this year about not using AI to get on the global leaderboard. You can read more about this new rule <a href="https://adventofcode.com/about#faq_ai_leaderboard" target='_blank' className='font-bold underline decoration-darkpurple decoration-2'>here</a>.</li>
+                <li>Our Winter Coding Challenge also has this rule. We cannot stop you from using AI to help you understand components of a puzzle, but we ask that you do not use it to solve the puzzle for you. It is up to the honor of the individual students not to cheat in this regard. This challenge is all about learning and becoming a better programer with other students - using AI to solve puzzles for you doesn't achieve that.</li>
               </ul>
+            <li>The representative/organizer for each school is responsible for ensuring the students representing their school are following the rules outlined above.</li>
           </ul>
         </div>
       </div>
@@ -65,34 +64,14 @@ export default function WinterCodingChallenge() {
         <h2 className="pt-4 text-2xl font-medium">
           Prizes
         </h2>
-        <p>All students and teams with at least one star will also be entered for random prizes.</p>
-
-        <div className="pt-4">
-          <p>Top three competitors in <span className="font-bold italic">each</span> of the following categories (with at least 10 stars) will earn a prize.</p>
-          <ul className="list-disc mt-2 ml-10">
-            <li>High School Students</li>
-            <li>Middle School Students</li>
-            <li>High School with the Most Cumulative Stars (Sum of all Individuals & Teams for that school.)</li>
-          </ul>
-        </div>
-
-        <div className="pt-4">
-          <p>There will be additional prizes for high school competitors.</p>
-          <ul className="list-disc mt-2 ml-10">
-            <li><span className="font-bold">1<sup>st</sup> Place Individual:</span> $100 Cash</li>
-            <li><span className="font-bold">2<sup>nd</sup> Place Individual:</span> $75 Cash</li>
-            <li><span className="font-bold">3<sup>rd</sup> Place Individual:</span> $50 Cash</li>
-            <li><span className="font-bold">1<sup>st</sup> Place Team:</span> $50 Cash (Split Between the Team Members)</li>
-            <li><span className="font-bold">1<sup>st</sup> Place School:</span> An engraving on a perpetual trophy to be displayed at their school.</li>
-          </ul>
-        </div>
+        <p>🏆 The school with the most stars earned during this competition will receive the annual Winter Coding Competition trophy and bragging rights for the next 12 months!</p>
       </div>
 
       <div className="pt-4">
         <h2 id="sponsors" className="pt-4 text-2xl font-medium">
           Sponsors
         </h2>
-        <p>This competition would not be possible without our generous sponsors! If your business would like to donate a prize and be listed as a sponsor of this competition below, please email <a href="mailto:info@mncomputerclub.com?subject=WCC Sponsorship" target="_blank" className="font-bold underline decoration-darkpurple decoration-2">info@mncomputerclub.com</a>.</p>
+        <p>This competition would not be possible without our generous sponsors! If your business would like to support this competition, please email <a href="mailto:info@mncomputerclub.com?subject=WCC Sponsorship" target="_blank" className="font-bold underline decoration-darkpurple decoration-2">info@mncomputerclub.com</a>.</p>
       </div>
 
       <div className="pt-4">
@@ -101,7 +80,7 @@ export default function WinterCodingChallenge() {
         </h2>
 
         <p>
-          Every December the Rochester Computer Club hosts a programming competition for middle and high school students. There are 25 puzzles for students to solve. These puzzles are from the well-known <a href="https://adventofcode.com" target="_blank" className="font-bold underline decoration-darkpurple decoration-2">Advent of Code</a>. A puzzle is released at midnight EST/UTC-5 (11:00:00 PM CST/UTC-6) once per day starting on December 1st and continuing through December 25th.
+          Every December the Minnesota Computer Club hosts a programming competition for middle and high school students. There are 25 puzzles for students to solve. These puzzles are from the well-known <a href="https://adventofcode.com" target="_blank" className="font-bold underline decoration-darkpurple decoration-2">Advent of Code</a>. A puzzle is released at midnight EST/UTC-5 (11:00:00 PM CST/UTC-6) once per day starting on December 1st and continuing through December 25th.
         </p>
 
         <div className="pt-4">

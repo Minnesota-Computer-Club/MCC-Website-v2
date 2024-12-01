@@ -50,11 +50,11 @@ const timeBetweenDates = (startDate, endDate, options) => {
 
 // A helper function to ensure that the startDate and endDate the user supplied forms a valid date range.
 // If a startDate or endDate is not supplied, the current datetime is used.
-const countdownIsValid = (startDate, endDate) => {
+const countdownIsValid = (startDate, endDate, timeLeft) => {
   try {
-    const isWithinInterval = isWithinInterval(new Date(), { start: startDate || new Date(), end: endDate || new Date() });
-    const countdownIsNotNegative = Object.values(timeLeft).every(item => item >= -1);
-    return isWithinInterval && countdownIsNotNegative;
+    const validInterval = isWithinInterval(new Date(), { start: startDate || new Date(), end: endDate || new Date() });
+    const intervalHasBeenCalculated = Object.values(timeLeft).every(item => item >= -1);
+    return validInterval && intervalHasBeenCalculated;
   } catch {
     return false;
   }
@@ -84,7 +84,7 @@ const Countdown = (props) => {
       <span>{props.divider || ': '}</span>
 
       {
-        countdownIsValid(props.startDate || new Date(), props.repeatUntil || props.endDate || new Date()) ?
+        countdownIsValid(props.startDate || new Date(), props.repeatUntil || props.endDate || new Date(), timeLeft) ?
           Object.keys(timeLeft).map((key) => (
 
             // Only display countdown elements whose value is not 0 (except for seconds).
