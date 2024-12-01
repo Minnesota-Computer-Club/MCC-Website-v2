@@ -13,7 +13,7 @@ YEAR = str(os.getenv('AOC_YEAR'))
 COMPETITION_FILE_PATH = os.getenv('COMPETITION_FILE')
 SESSION_TOKEN = os.getenv('AOC_TOKEN')
 
-OUTPUT_FILE_NAME = f"schoolScores{YEAR}.json"
+OUTPUT_FILE_NAME = f"generatedAocLeaderboard{YEAR}.json"
 OUTPUT_FILE_PATH = Path(os.path.dirname(os.path.dirname(__file__))) / 'generatedData' / OUTPUT_FILE_NAME
 if (not OUTPUT_FILE_PATH.parent.is_dir()):
     os.mkdir(OUTPUT_FILE_PATH.parent)
@@ -22,7 +22,7 @@ def main():
     school_info = []
     
     competition_info = {}
-    with open(COMPETITION_FILE, 'r') as cf:
+    with open(COMPETITION_FILE_PATH, 'r') as cf:
         competition_info = json.load(cf)
         
     for school in competition_info["schools"]:
