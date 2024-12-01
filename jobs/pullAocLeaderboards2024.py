@@ -25,8 +25,6 @@ def main():
     with open(COMPETITION_FILE, 'r') as cf:
         competition_info = json.load(cf)
         
-    print(competition_info)
-
     for school in competition_info["schools"]:
         lb_data = requests.get(
             f'https://adventofcode.com/{YEAR}/leaderboard/private/view/{school["leaderboard"]}.json',
@@ -38,9 +36,10 @@ def main():
             }
         ).json()
         
-        members = lb_data["members"]
+        # Filter out members who have not earned any stars
+        members = {k:m for k,m in lb_data["members"].items() if m["stars"] > 0}
         num_competitors = len(members)
-        total_stars = sum(int(c["stars"]) for c in members.values())        
+        total_stars = sum(c["stars"] for c in members.values())        
         efficiency = total_stars/num_competitors
         
         school_info.append({k:school[k] for k in ["name", "city"]} | {
