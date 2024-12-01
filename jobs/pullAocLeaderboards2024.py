@@ -10,7 +10,7 @@ from pathlib import Path
 load_dotenv()  
 
 YEAR = str(os.getenv('AOC_YEAR'))
-COMPETITION_FILE = os.getenv('COMPETITION_FILE')
+COMPETITION_FILE_PATH = os.getenv('COMPETITION_FILE')
 SESSION_TOKEN = os.getenv('AOC_TOKEN')
 
 OUTPUT_FILE_NAME = f"schoolScores{YEAR}.json"
