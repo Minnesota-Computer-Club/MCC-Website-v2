@@ -19,6 +19,18 @@ jobs:
         key: ${{ secrets.KEY }}
         port: ${{ secrets.PORT }}
         script: |
+          # Ensure nvm is installed and load it
+          export NVM_DIR="$HOME/.nvm"
+          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+          # Install the latest LTS version of Node.js
+          nvm install --lts
+          nvm use --lts
+
+          # Verify the Node.js version
+          node -v
+          
+          # Build & deploy site.
           cd /var/www/mncomputerclub.com
           git pull
           npm ci
