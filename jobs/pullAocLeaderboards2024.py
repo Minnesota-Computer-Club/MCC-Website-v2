@@ -40,7 +40,7 @@ def main():
         members = {k:m for k,m in lb_data["members"].items() if m["stars"] > 0}
         num_competitors = len(members)
         total_stars = sum(c["stars"] for c in members.values())        
-        efficiency = total_stars/num_competitors
+        efficiency = total_stars/num_competitors if num_competitors > 0 else 0
         
         school_info.append({k:school[k] for k in ["name", "city"]} | {
             "stars": total_stars,
