@@ -42,3 +42,4 @@ This is a Python script that will be used to query all of the entires in the Goo
 
 ## Helpful Commands
 - `crontab -e`
+- `sudo grep CRON /var/log/syslog`
