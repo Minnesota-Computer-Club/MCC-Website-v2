@@ -25,7 +25,7 @@ jobs:
 
           # Install the latest LTS version of Node.js
           nvm install --lts
-          nvm use --lts  # Make sure it's using the latest LTS version
+          nvm use --lts
 
           # Verify the Node.js version
           node -v
