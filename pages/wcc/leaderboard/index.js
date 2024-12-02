@@ -78,7 +78,7 @@ export default function WCCLeaderboard(props) {
       for (const school of schoolData) {
  
         // Update competition-wide statistics.
-        totalNumberOfCompetitors += 1;
+        totalNumberOfCompetitors += school.participants;
         totalNumberOfStarsCompleted += school.stars;
         
         // Add school to the competition.
