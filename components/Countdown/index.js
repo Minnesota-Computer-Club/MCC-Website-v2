@@ -42,7 +42,13 @@ const timeBetweenDates = (startDate, endDate, options) => {
   // Attempt to get the interval between our start and end date, and if we encounter a RangeError (https://date-fns.org/v2.29.3/docs/intervalToDuration#exceptions),
   // then return our placeholder time remaining of -1 to signify an error has occurred.
   try {
-    return (intervalToDuration({ start: startDate, end: endDate }));
+    let durationRemaining = intervalToDuration({ start: startDate, end: endDate })
+    // NOTE(mweiner): date-fns appears to no longer set the `seconds` field if there are 0 seconds.
+    // We want to always display 00s on our countdown, so we will ensure this field is always set.
+    if ( durationRemaining["seconds"] == null) {
+      durationRemaining.seconds = 0
+    }
+    return (durationRemaining);
   } catch {
     return defaultRemainingTime;
   }
@@ -52,7 +58,15 @@ const timeBetweenDates = (startDate, endDate, options) => {
 // If a startDate or endDate is not supplied, the current datetime is used.
 const countdownIsValid = (startDate, endDate, timeLeft) => {
   try {
-    const validInterval = isWithinInterval(new Date(), { start: startDate || new Date(), end: endDate || new Date() });
+    // NOTE(mweiner): date-fns does not appear to check validity of the range
+    // inside their `isWithinInterval` function. We need to check for them.
+    const startTime = startDate || new Date()
+    const endTime = endDate || new Date()
+    if (endTime.getTime() <= startTime.getTime()) {
+      return false
+    }
+
+    const validInterval = isWithinInterval(new Date(), { start: startTime, end: endTime });
     const intervalHasBeenCalculated = Object.values(timeLeft).every(item => item >= -1);
     return validInterval && intervalHasBeenCalculated;
   } catch {
