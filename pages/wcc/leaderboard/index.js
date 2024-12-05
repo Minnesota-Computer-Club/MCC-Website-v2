@@ -163,7 +163,7 @@ export default function WCCLeaderboard(props) {
       </div>
 
       {/* School Wide Competition Leaderboard */}
-      <div className="pt-4">
+      <div className="pt-4" id="current">
         <h2 className="pt-4 text-2xl font-medium">2024 School Wide Competition</h2>
         {isLoading ?
           <LoadingWheel></LoadingWheel>
