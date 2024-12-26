@@ -140,8 +140,7 @@ export default function WCCLeaderboard(props) {
               <div className="mb-4">
                 <Countdown
                   prefix="Next AOC Puzzle Unlocks In"
-                  endDate={getPuzzleDate()}
-                  repeatUntil={fromUnixTime(1766642401)}
+                  repeatUntil={fromUnixTime(1735106401)}
                   endMessage="Advent of Code 2024 has ended."
                 />
 
