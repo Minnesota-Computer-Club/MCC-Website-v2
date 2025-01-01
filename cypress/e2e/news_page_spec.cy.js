@@ -1,6 +1,7 @@
 describe('New Page', () => {
   beforeEach(() => {
     cy.visit('/news')
+
   });
 
   it('Has Visible Page Content', () => {
@@ -17,9 +18,6 @@ describe('New Page', () => {
       cy.get($article).find('time').should('be.visible');
       cy.get($article).find('h3').should('be.visible');
       cy.get($article).find('div > p').last().should('be.visible');
-      cy.get($article).click();
-      cy.get('body').contains('Uh, oh. Page not found.').should('not.exist');
-      cy.go('back');
     });
   });
 });

@@ -93,6 +93,9 @@ export async function getStaticProps() {
     };
   });
 
+  // Sort posts in DESCENDING order based on `updatedAt` in the post's metadata
+  posts.sort((a, b) => b.frontmatter.datetime.localeCompare(a.frontmatter.datetime))
+
   return {
     props: {
       posts,
