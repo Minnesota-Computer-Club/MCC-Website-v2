@@ -35,17 +35,7 @@ export default function WinterCodingChallenge() {
         <h2 id="register" className="pt-4 text-2xl font-medium">
           Register
         </h2>
-        <p>The 2024 Winter Coding Challenge has officially started! This year there is no team or individual competition. We will only be running a competition between schools. Getting your school involved in the competition only takes a few minutes. Here's how you can do it:</p>
-        <ol className="list-decimal mt-2 ml-10">
-          <li>Visit <a href="https://adventofcode.com" target='_blank' className='font-bold underline decoration-darkpurple decoration-2'>https://adventofcode.com</a> and login.</li>
-          <li>Click [Leaderboard] at the top of the site.</li>
-          <li>Click [Private Leaderboard] near the top of the page.</li>
-          <li>Under the "--- Your Private Leaderboard ---" section on the page, click [Create It].</li>
-          <li>You will then see a message that says something like: "Your private leaderboard has been created. Others can join it with the code xxxxxxx-yyyyyyyy."</li>
-          <li>The "xxxxxxx-yyyyyyyy" code is unique to your private leaderboard and it is how people can join your leaderboard. Keep it private!</li>
-          <li>Share your "xxxxxxx-yyyyyyyy" code with the students from your school that want to compete in the competition.</li>
-        </ol>
-        <p className="mt-2">To have your school displayed on the site, please email your private leaderboard code to <a href="mailto:info@mncomputerclub.com?subject=WCC 2024 Registration" target="_blank" className="font-bold underline decoration-darkpurple decoration-2">info@mncomputerclub.com</a> or visit our Discord server (linked above) to share your school's private leaderboard code. We will join your leaderboard as user "Minnesota Computer Club Bot" to gather data.</p>
+        <p>The 2024 Winter Coding Challenge has officially ended. The leaderboard for this year's competition has been frozen. Thank you to everyone for your interest and participation!</p>
         </div>
 
       <div className="pt-4">
