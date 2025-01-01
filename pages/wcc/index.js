@@ -36,7 +36,7 @@ export default function WinterCodingChallenge() {
           Register
         </h2>
         <p>The 2024 Winter Coding Challenge has officially ended. The leaderboard for this year's competition has been frozen. Thank you to everyone for your interest and participation!</p>
-        </div>
+      </div>
 
       <div className="pt-4">
         <h2 className="pt-4 text-2xl font-medium">
