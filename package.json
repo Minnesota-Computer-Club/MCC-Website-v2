@@ -30,7 +30,7 @@
     "react-markdown": "^9.0.1"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.15",
+    "@tailwindcss/typography": "^0.5.16",
     "autoprefixer": "^10.4.20",
     "cypress": "^13.17.0",
     "gray-matter": "^4.0.3",
