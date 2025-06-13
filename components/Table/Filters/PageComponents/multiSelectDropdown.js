@@ -48,7 +48,7 @@ export default function multiSelectDropdown(column, table) {
     <div className="">
       <Listbox value={selected} onChange={setSelected} multiple>
         <div className="relative mt-1">
-          <Listbox.Button className="relative w-full cursor-pointer bg-white dark:bg-slate-900 py-1 pl-3 pr-10 text-left focus:outline-none focus-visible:lightpurple focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-lightpurple sm:text-sm">
+          <Listbox.Button className="relative w-full cursor-pointer bg-white dark:bg-slate-900 py-1 pl-3 pr-10 text-left focus:outline-hidden focus-visible:lightpurple focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-lightpurple sm:text-sm">
             {
               selected.length == 0 ?
                 <span className="block truncate text-gray-400">Select</span>
@@ -69,7 +69,7 @@ export default function multiSelectDropdown(column, table) {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Listbox.Options className="z-50 absolute mt-1 max-h-60 w-auto md:w-full overflow-auto bg-white py-1 text-base ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+            <Listbox.Options className="z-50 absolute mt-1 max-h-60 w-auto md:w-full overflow-auto bg-white py-1 text-base ring-1 ring-black ring-opacity-5 focus:outline-hidden sm:text-sm">
               {options.map((option, optionIdx) => (
                 <Listbox.Option
                   key={optionIdx}

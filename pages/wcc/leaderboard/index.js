@@ -114,10 +114,10 @@ export default function WCCLeaderboard(props) {
         <meta name="twitter:card" content="summary"></meta>
       </Head>
 
-      <div className='w-100 flex flex-nowrap bg-darkpurple -mt-8 -mx-8 mb-8 font-bold text-slate-50 space-x-2'>
+      <div className='flex bg-darkpurple -mt-8 -mx-8 mb-8 font-bold text-slate-50 space-x-2'>
         <p className='ml-8'>Previous Competitions: </p>
-        <a href='/wcc/leaderboard/2023/' className='m-auto underline hover:no-underline'>2023</a>
-        <a href='/wcc/leaderboard/2022/' className='m-auto underline hover:no-underline'>2022</a>
+        <a href='/wcc/leaderboard/2023/' className='my-auto underline hover:no-underline'>2023</a>
+        <a href='/wcc/leaderboard/2022/' className='my-auto underline hover:no-underline'>2022</a>
       </div>
 
       <div className="text-center mb-4">
@@ -130,7 +130,7 @@ export default function WCCLeaderboard(props) {
 
       {/* Statistics Panel */}
       <div className="flex flex-wrap justify-center align-middle">
-        <div className="text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-white rounded p-4">
+        <div className="text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-white rounded-sm p-4">
           <h2 className="pb-2 text-darkpurple dark:text-medpurple font-bold">2024 Statistics</h2>
 
           {isLoading ?
