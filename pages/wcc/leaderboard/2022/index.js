@@ -292,7 +292,7 @@ export default function WCCLeaderboard(props) {
 
       {/* Statistics Panel */}
       <div className="flex flex-wrap justify-center align-middle">
-        <div className="text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-white rounded p-4">
+        <div className="text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-white rounded-sm p-4">
           <h2 className="pb-2 text-darkpurple dark:text-medpurple font-bold">2022 Statistics</h2>
 
           {isLoading ?

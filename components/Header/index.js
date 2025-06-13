@@ -29,7 +29,7 @@ export default function Header(props) {
 
         {/* Mobile Menu Hamburger Icon Wrapper */}
         <div className="-my-2 -mr-2 md:hidden">
-          <Popover.Button className="inline-flex items-center justify-center rounded-md p-2 text-darkpurple hover:bg-gray-100 hover:text-gray-500 focus:outline-none">
+          <Popover.Button className="inline-flex items-center justify-center rounded-md p-2 text-darkpurple hover:bg-gray-100 hover:text-gray-500 focus:outline-hidden">
             <span className="sr-only">Open Menu</span>
             <Bars3Icon className="h-6 w-6" aria-hidden="true" />
           </Popover.Button>
@@ -55,7 +55,7 @@ export default function Header(props) {
                   <>
                     <Popover.Button
                       className={classNames(
-                        open ? 'text-darkpurple' : 'text-black dark:text-white', 'group inline-flex items-center rounded-md text-base font-medium hover:text-darkpurple focus:outline-none'
+                        open ? 'text-darkpurple' : 'text-black dark:text-white', 'group inline-flex items-center rounded-md text-base font-medium hover:text-darkpurple focus:outline-hidden'
                       )}
                     >
                       <span className="hover:text-darkpurple">Winter Coding Challenge</span>
@@ -84,7 +84,7 @@ export default function Header(props) {
                             {(navItem.subItems).map((resource) => (
                               // The following Github Issue explains (very thoroughly) why we need Popover.Button components here.
                               // https://github.com/tailwindlabs/headlessui/issues/427#issuecomment-916925396
-                              <Popover.Button as={Link} key={resource.name} href={resource.href} className="-m-3 block rounded-md p-3 hover:bg-gray-50 dark:hover:bg-gray-500 focus:outline-none">
+                              <Popover.Button as={Link} key={resource.name} href={resource.href} className="-m-3 block rounded-md p-3 hover:bg-gray-50 dark:hover:bg-gray-500 focus:outline-hidden">
                                 <p className="text-base font-medium">{resource.name}</p>
                                 <p className="mt-1 text-sm">{resource.description}</p>
                               </Popover.Button>
@@ -102,7 +102,7 @@ export default function Header(props) {
         {/* CTA Wrapper */}
         <div className="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
           <a href="mailto:info@mncomputerclub.com?subject=Requesting an Invite to MCC Discord Server" target="_blank">
-            <button className="relative inline-flex items-center justify-center p-0.5 mb-1.5 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-darkpurple to-medpurple group-hover:from-darkpurple group-hover:to-medpurple hover:text-white dark:text-white">
+            <button className="relative inline-flex items-center justify-center p-0.5 mb-1.5 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-linear-to-br from-darkpurple to-medpurple group-hover:from-darkpurple group-hover:to-medpurple hover:text-white dark:text-white">
               <span className="relative px-5 py-2 transition-all ease-in duration-75 bg-white dark:bg-slate-900 rounded-md group-hover:bg-opacity-0">
                 Join Discord Server
               </span>
@@ -137,7 +137,7 @@ export default function Header(props) {
                 </div>
 
                 <div className="-mr-2">
-                  <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none">
+                  <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-hidden">
                     <span className="sr-only">Close menu</span>
                     <XMarkIcon className="h-6 w-6" aria-hidden="true" />
                   </Popover.Button>
@@ -148,7 +148,7 @@ export default function Header(props) {
                 {navigationItems.map((navItem) => (
                   // The following Github Issue explains (very thoroughly) why we need Popover.Button components here.
                   // https://github.com/tailwindlabs/headlessui/issues/427#issuecomment-916925396
-                  <Popover.Button as={Link} key={navItem.name} href={navItem.href} className="text-base font-medium hover:text-darkpurple focus:outline-none">
+                  <Popover.Button as={Link} key={navItem.name} href={navItem.href} className="text-base font-medium hover:text-darkpurple focus:outline-hidden">
                     <p className="text-base font-medium">{navItem.name}</p>
                   </Popover.Button>
                 ))}
@@ -157,7 +157,7 @@ export default function Header(props) {
               {/* Mobile CTA Wrapper */}
               <div className="mt-6">
                 <a href="mailto:info@mncomputerclub.com?subject=Requesting an Invite to MCC Discord Server" target="_blank" className="w-full">
-                  <button className="relative inline-flex items-center justify-center w-full p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-darkpurple to-medpurple group-hover:from-darkpurple group-hover:to-medpurple hover:text-white dark:text-white">
+                  <button className="relative inline-flex items-center justify-center w-full p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-linear-to-br from-darkpurple to-medpurple group-hover:from-darkpurple group-hover:to-medpurple hover:text-white dark:text-white">
                     <span className="relative w-full px-5 py-2 transition-all ease-in duration-75 bg-white dark:bg-slate-900 rounded-md group-hover:bg-opacity-0">
                       Join Discord Server
                     </span>

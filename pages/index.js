@@ -24,8 +24,8 @@ export default function Homepage() {
         </div>
 
         <h1 className="text-4xl py-4 font-medium">Minnesota Computer Club</h1>
-        <p className="pt-2 p-4">The Minnesota Computer Club is a Discord-based community of students and teachers from all across Minnesota. We are open and welcoming to <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-darkpurple to-medpurple">anyone</span> that is interested in Computer Science!</p>
-        <p>You can obtain an invite to our Discord server by clicking the <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-darkpurple to-medpurple">Join Discord Server</span> button above. This will open an email client for you to send an email to <a className="font-bold underline decoration-darkpurple decoration-2" href="mailto:info@mncomputerclub.com?subject=Requesting an Invite to MCC Discord Server">info@mncomputerclub.com</a> to request an invite code. This will help protect our community from spam and abuse.</p>
+        <p className="pt-2 p-4">The Minnesota Computer Club is a Discord-based community of students and teachers from all across Minnesota. We are open and welcoming to <span className="font-extrabold text-transparent bg-clip-text bg-linear-to-r from-darkpurple to-medpurple">anyone</span> that is interested in Computer Science!</p>
+        <p>You can obtain an invite to our Discord server by clicking the <span className="font-extrabold text-transparent bg-clip-text bg-linear-to-r from-darkpurple to-medpurple">Join Discord Server</span> button above. This will open an email client for you to send an email to <a className="font-bold underline decoration-darkpurple decoration-2" href="mailto:info@mncomputerclub.com?subject=Requesting an Invite to MCC Discord Server">info@mncomputerclub.com</a> to request an invite code. This will help protect our community from spam and abuse.</p>
 
       </div>
 
