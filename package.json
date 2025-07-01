@@ -35,6 +35,6 @@
     "cypress": "^14.4.1",
     "gray-matter": "^4.0.3",
     "postcss": "^8.5.5",
-    "tailwindcss": "^4.1.10"
+    "tailwindcss": "^4.1.11"
   }
 }
