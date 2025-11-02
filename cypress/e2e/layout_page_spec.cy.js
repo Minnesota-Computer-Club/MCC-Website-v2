@@ -56,12 +56,10 @@ describe('Minimum Page Layout', () => {
                   .get('a').contains(dropdownLink.name).click();
                 cy.location('pathname').should('eq', dropdownLink.path);
                 cy.location('hash').should('eq', dropdownLink.hash || "");
-                cy.visit('/');
               })
             } else {
               cy.get('nav').first().children().get('a').contains(link.name).click();
               cy.location('pathname').should('eq', link.path);
-              cy.visit('/');
             }
           });
         });
