@@ -9,7 +9,7 @@ The Header component contains the entire header portion of the website. This inc
 If for some reason you explicitly add the Header to an additional page, the following code demonstrates that.
 
 ```jsx
-import Header from '/components/Header';
+import Header from "../../../components/Header";
 
 export default function Example(props) {
   return (

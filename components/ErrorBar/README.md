@@ -7,7 +7,7 @@ An error bar should be used when you want to display an error to the end user. T
 The following example shows how you could conditionally display the Error Bar component based on passing a prop to the page or parent component. When the `error` object has a truthy value for its `errorStatus` property, the Error Bar is displayed to the user.
 
 ```jsx
-import ErrorBar from "/components/ErrorBar";
+import ErrorBar from "../../../components/ErrorBar";
 
 export default function Example(props) {
   return (

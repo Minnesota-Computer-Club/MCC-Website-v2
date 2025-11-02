@@ -7,7 +7,7 @@ The Information Bar component should be used when you want to explicitly call at
 The following example would create an information bar that reads `Minnesota Computer Club is not associated with Advent of Code. All puzzles are property of Advent of Code.` with a link to the right that says `View Advent of Code` that would link to `https://adventofcode.com`.
 
 ```jsx
-import InfoBar from '/components/InformationBar';
+import InfoBar from "../../../components/InformationBar";
 
 export default function Example(props) {
   return (

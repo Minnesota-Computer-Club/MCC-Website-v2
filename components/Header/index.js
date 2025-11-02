@@ -8,7 +8,7 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { Fragment } from 'react';
 
-import { classNames, navigationItems } from '/components/utils';
+import { classNames, navigationItems } from "../utils";
 
 export default function Header(props) {
   return (

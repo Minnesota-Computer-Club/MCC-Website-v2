@@ -6,16 +6,16 @@ import * as React from 'react';
 import * as fs from 'fs';
 import { createColumnHelper } from '@tanstack/react-table';
 
-import Countdown from "/components/Countdown";
-import ErrorBar from "/components/ErrorBar";
-import Table from '/components/Table';
-import { customFilterComponent, customFilterFunction } from "/components/Table/Filters";
-import { getPuzzleDate} from "/components/Table/utils";
-import PageTitle from "/components/PageTitle";
-import { starIcon } from "/components/utils";
-import Badge from "/components/Badge";
-import ExpandingPanel from "/components/ExpandingPanel";
-import LoadingWheel from "/components/LoadingWheel";
+import Countdown from "../../../components/Countdown";
+import ErrorBar from "../../../components/ErrorBar";
+import Table from "../../../components/Table";
+import { customFilterComponent, customFilterFunction } from "../../../components/Table/Filters";
+import { getPuzzleDate} from "../../../components/Table/utils";
+import PageTitle from "../../../components/PageTitle";
+import { starIcon } from "../../../components/utils";
+import Badge from "../../../components/Badge";
+import ExpandingPanel from "../../../components/ExpandingPanel";
+import LoadingWheel from "../../../components/LoadingWheel";
 
 // Used for column definitions for each table.
 const columnHelper = createColumnHelper();

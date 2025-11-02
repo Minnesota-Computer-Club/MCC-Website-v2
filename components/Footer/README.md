@@ -9,7 +9,7 @@ The Footer component contains the entire footer portion of the website. This inc
 If for some reason you explicitly add the Footer to an additional page, the following code demonstrates that.
 
 ```jsx
-import Footer from '/components/Footer';
+import Footer from "../../../components/Footer";
 
 export default function Example(props) {
   return (

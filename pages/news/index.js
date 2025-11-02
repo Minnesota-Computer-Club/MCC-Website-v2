@@ -3,7 +3,7 @@
 
 // Import required dependencies.
 import Head from 'next/head';
-import PageTitle from '/components/PageTitle';
+import PageTitle from "../../components/PageTitle";
 
 import { format, parseISO } from 'date-fns';
 import fs from 'fs';

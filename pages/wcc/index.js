@@ -1,7 +1,7 @@
 // Import required dependencies.
 import Head from 'next/head';
-import InfoBar from '/components/InformationBar';
-import PageTitle from '/components/PageTitle';
+import InfoBar from "../../components/InformationBar";
+import PageTitle from "../../components/PageTitle";
 
 export default function WinterCodingChallenge() {
 
