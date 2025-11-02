@@ -7,7 +7,7 @@ The Page Title can be used to display the page name in the fancy purple gradient
 The example below would display `About Us` in the fancy, large purple gradient text with `Minnesota Computer Club` displayed underneath it.
 
 ```jsx
-import PageTitle from '/components/PageTitle';
+import PageTitle from "../../../components/PageTitle";
 
 export default function Example(props) {
   return (

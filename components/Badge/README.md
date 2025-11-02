@@ -5,7 +5,7 @@ Badges should be used to complement additional information or bring attention to
 ## Usage
 
 ```jsx
-import Badge from "/components/Badge";
+import Badge from "../../../components/Badge";
 
 export default function Example() {
   return (

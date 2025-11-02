@@ -6,8 +6,8 @@ import { ThemeProvider } from 'next-themes';
 
 // Import global styles.
 import './global.css';
-import Footer from '/components/Footer';
-import Header from '/components/Header';
+import Footer from "../components/Footer";
+import Header from "../components/Header";
 
 // Create constant for the custom font being used.
 const inter = Inter({

@@ -8,7 +8,7 @@ The following example would display a continuous countdown from the current date
 
 ```jsx
 import { fromUnixTime } from 'date-fns';
-import Countdown from "/components/Countdown";
+import Countdown from "../../../components/Countdown";
 
 export default function Example() {
   return (
@@ -25,8 +25,8 @@ The following example would display a repetitive countdown from the current date
 
 ```jsx
 import { fromUnixTime } from 'date-fns';
-import Countdown from "/components/Countdown";
-import { getPuzzleDate } from "/components/LeaderboardTable/utils";
+import Countdown from "../../../components/Countdown";
+import { getPuzzleDate } from "../../../components/LeaderboardTable/utils";
 
 export default function Example() {
   return (

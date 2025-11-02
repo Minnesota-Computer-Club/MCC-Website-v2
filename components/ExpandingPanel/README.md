@@ -7,7 +7,7 @@ The Expanding Panel component works great to display information like frequently
 The following example would great a single Expanding Panel with the title of `FAQs` above the panel, the panel label would read `How is the school wide competition scored?` and the paragraph would be the content within the panel when it was opened by a user.
 
 ```jsx
-import ExpandingPanel from "/components/ExpandingPanel";
+import ExpandingPanel from "../../../components/ExpandingPanel";
 
 export default function Example(props) {
   return (

@@ -5,14 +5,14 @@ import Head from 'next/head';
 import * as React from 'react';
 import { createColumnHelper } from '@tanstack/react-table';
 
-import Countdown from "/components/Countdown";
-import ErrorBar from "/components/ErrorBar";
-import Table from '/components/Table';
-import { customFilterComponent, customFilterFunction } from "/components/Table/Filters";
-import { getPuzzleDate, isUserValid, MAX_STARS } from "/components/Table/utils";
-import PageTitle from "/components/PageTitle";
-import { starIcon } from "/components/utils";
-import LoadingWheel from "/components/LoadingWheel";
+import Countdown from "../../../../components/Countdown";
+import ErrorBar from "../../../../components/ErrorBar";
+import Table from "../../../../components/Table";
+import { customFilterComponent, customFilterFunction } from "../../../../components/Table/Filters";
+import { getPuzzleDate, isUserValid, MAX_STARS } from "../../../../components/Table/utils";
+import PageTitle from "../../../../components/PageTitle";
+import { starIcon } from "../../../../components/utils";
+import LoadingWheel from "../../../../components/LoadingWheel";
 
 // Used for column definitions for each table.
 const columnHelper = createColumnHelper();

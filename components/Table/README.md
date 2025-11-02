@@ -9,7 +9,7 @@ The Table component should be used to display any content within a table. Namely
 The following example would create an table with the default columns (Name, Stars, and Last Star) and no rows (since we provided an empty array to `data`).
 
 ```jsx
-import Table from '/components/Table';
+import Table from "../../../components/Table";
 
 export default function Example(props) {
   return (
@@ -25,7 +25,7 @@ The following example would create an table with 3 columns (Name, Initial, and A
 
 ```jsx
 import { createColumnHelper } from '@tanstack/react-table';
-import Table from '/components/Table';
+import Table from "../../../components/Table";
 
 export default function Example(props) {
   const exampleColumns = [

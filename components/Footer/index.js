@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 
-import { navigationItems } from '/components/utils';
+import { navigationItems } from "../utils";
 
 export default function Footer(props) {
 

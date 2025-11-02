@@ -7,7 +7,7 @@ The Loading Wheel is a spinning loading icon that should be used to inform the u
 The LoadingWheel will be most commonly used when data processing or fetching of an external API is required before data is displayed to the user. You will most likely use this component with a conditional render (as shown below).
 
 ```jsx
-import LoadingWheel from "/components/LoadingWheel";
+import LoadingWheel from "../../../components/LoadingWheel";
 import * as React from 'react';
 
 export default function Example(props) {
